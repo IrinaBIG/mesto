@@ -1,0 +1,11 @@
+.profile__link {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+
+}
+
+.profile__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease; 
+}

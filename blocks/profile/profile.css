@@ -1,0 +1,23 @@
+.profile {
+    width: 100%;
+    max-width: 880px;
+    max-height: 286px;
+    margin: 0 200px;
+    display: flex;
+    flex-direction: row;
+   /* justify-content: space-between;*/
+   position: relative;
+    align-items: center;
+    /*border: 1px solid greenyellow;*/
+    flex-wrap: wrap;
+    /*gap: 15px;
+    /*justify-content: space-between;
+   /* display: grid;
+    grid-template-columns: 168.75px 294px 24px 150px;*/
+}
+
+@media (max-width: 1080px) {
+    .profile {
+        margin: 0 100px;
+    }
+}

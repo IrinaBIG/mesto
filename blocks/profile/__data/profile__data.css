@@ -1,0 +1,7 @@
+.profile__data {
+    justify-items: flex-start;
+    max-height: 73px;
+    border: 1px solid orange;
+    /*display: flex;
+    flex-direction: column;*/
+}

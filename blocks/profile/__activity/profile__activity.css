@@ -1,0 +1,10 @@
+.profile__activity {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    font-style: normal;
+    color: #FFF;
+    /*border: 1px solid red;*/
+    margin: 0;
+}

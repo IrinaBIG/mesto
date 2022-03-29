@@ -1,0 +1,18 @@
+.button {
+    width: 149px;
+    height: 44px;
+    border: 2px solid white;
+    display: flex;
+    /* align-items: center;*/
+    justify-items: flex-end;
+   /* margin: auto;*/
+   position: absolute;
+   top: 35px;
+   right: 0;
+   border-radius: 2px;
+}
+
+.button:hover {
+    opacity: 0.6;
+    transition: opacity 0.3s ease; 
+}
