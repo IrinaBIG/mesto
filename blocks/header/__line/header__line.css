@@ -1,0 +1,6 @@
+.header__line {
+    width: 100%;
+    background-image: url(../../../images/Line.svg);
+    margin-top: 41px;
+    height: 1px;
+}
