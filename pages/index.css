@@ -20,7 +20,8 @@
 @import url(../blocks/cards/__date/cards__date.css);
 @import url(../blocks/cards/__button/cards__button.css);
 @import url(../blocks/photo-grid/photo-grid.css);
-
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__author/footer__author.css);
 /* шрифты */ 
 @import url(../font-face/font-face.css);
 @import url(../font-face/inter.css);
