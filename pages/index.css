@@ -13,6 +13,12 @@
 @import url(../blocks/profile/__link/profile__link.css);
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/__plus/button__plus.css);
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__item/crads__item.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__place/cards__place.css);
+@import url(../blocks/cards/__date/cards__date.css);
+@import url(../blocks/cards/__button/cards__button.css);
 @import url(../blocks/photo-grid/photo-grid.css);
 
 /* шрифты */ 
