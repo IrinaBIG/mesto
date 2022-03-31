@@ -1,7 +1,13 @@
-.profile__data {
-    justify-items: flex-start;
-    max-height: 73px;
-    border: 1px solid orange;
-    /*display: flex;
-    flex-direction: column;*/
+@media (max-width: 950px) {
+    .profile__data {
+    width: 100%;
+    margin-top: 40px;
+    }
+}
+
+@media (max-width: 320px) {
+    .profile__data {
+    width: 100%;
+    margin-top: 16px;
+    }
 }

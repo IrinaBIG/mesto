@@ -4,3 +4,16 @@
     margin: 25px 15px 31px 21px;
     
 }
+
+@media (max-width: 600px) {
+    .cards__date {
+       margin: 15px 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .cards__date {
+       margin: 21px 15px;
+       width: 246px;
+    }
+}

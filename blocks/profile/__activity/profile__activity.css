@@ -5,6 +5,12 @@
     line-height: 22px;
     font-style: normal;
     color: #FFF;
-    /*border: 1px solid red;*/
     margin: 0;
+}
+
+@media (max-width: 320px) {
+    .profile__activity {
+        font-size: 14px;
+        line-height: 17px;
+    }
 }

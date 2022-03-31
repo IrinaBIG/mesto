@@ -1,0 +1,27 @@
+.profile__item {
+    max-height: 73px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+    margin-left: 15px;
+}
+
+@media (max-width: 950px) {
+    .profile__item {
+       margin: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    .profile__item {
+     margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .profile__item {
+     max-width: 282px;
+    }
+}

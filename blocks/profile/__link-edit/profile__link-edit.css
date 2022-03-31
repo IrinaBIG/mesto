@@ -2,10 +2,15 @@
     width: 24px;
     height: 24px;
     margin-left: 10px;
-
 }
 
 .profile__link-edit:hover {
     opacity: 0.6;
-   /* transition: opacity 0.3s ease; */
+}
+
+@media (max-width: 420px) {
+    .profile__link-edit{
+        width: 18px;
+        height: 18px;
+    }
 }
