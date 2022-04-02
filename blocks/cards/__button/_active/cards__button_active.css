@@ -1,0 +1,7 @@
+.cards__button_active {
+    background-image: url(../../../../images/Union.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+}

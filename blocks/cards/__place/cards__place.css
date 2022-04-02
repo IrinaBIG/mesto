@@ -17,7 +17,7 @@
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 420px) {
     .cards__place {
         max-width: 200px;
     }

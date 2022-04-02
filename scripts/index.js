@@ -39,3 +39,14 @@ function formSubmitHandler (ev) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
+
+// делаем like
+
+const cardElement = document.querySelector('.cards');
+const buttonActive = cardElement.querySelector('.cards__button');
+
+function onChangeLikeColor () {
+    buttonActive.classList.add('cards__button_active');
+}
+
+cardElement.addEventListener('click', onChangeLikeColor);

@@ -11,6 +11,7 @@
     line-height: 22px;
     font-weight: 400;
     font-style: normal;
+    cursor: pointer;
 }
 
 .form__button:hover {
