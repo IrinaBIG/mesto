@@ -1,6 +1,7 @@
 # Проект: Место
 
-Ссылка на проектную работу: https://irinabig.github.io/mesto/index.html;
+Ссылка на проектную работу: https://irinabig.github.io/mesto/index.html
+
 в GitHube https://github.com/IrinaBIG/mesto.git
 
 ### Проектная работа №4
