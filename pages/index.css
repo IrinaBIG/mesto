@@ -36,8 +36,5 @@
 @import url(../blocks/form/__text/form__text.css);
 @import url(../blocks/form/__text/__text-active/form__text-active.css);
 @import url(../blocks/form/__text/__text-name/form__text-name.css);
-
-/* шрифты */ 
-
 @import url(../font-face/font-face.css);
 @import url(../font-face/inter.css);
