@@ -2,7 +2,6 @@
     display: flex;
     position: relative;
     margin: 25px 15px 31px 21px;
-    
 }
 
 @media (max-width: 600px) {

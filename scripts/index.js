@@ -32,7 +32,7 @@ const activeForm = document.querySelector('.form__active');
 const addActive = activeForm.querySelector('.form__text-active');
 
 function formSubmitHandler (ev) {
-    ev.preventDefault(); 
+    ev.preventDefault();
     nameInput.textContent = addName.value;
     activeInput.textContent = addActive.value;
 }
