@@ -1,10 +1,10 @@
 .profile__link-edit {
-    width: 24px;
-    height: 24px;
-    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    margin-left: 19px;
     background: url(../../../images/EditButton.svg);
     background-size: contain;
-    align-self: center;
+    margin-top: 26px;
     border: none;
     box-sizing: border-box;
     background-repeat: no-repeat;

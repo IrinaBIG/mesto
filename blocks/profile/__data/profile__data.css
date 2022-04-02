@@ -1,3 +1,7 @@
+.profile__data {
+    margin-top: 11px;
+    }
+
 @media (max-width: 950px) {
     .profile__data {
     width: 100%;
