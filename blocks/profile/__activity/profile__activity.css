@@ -1,4 +1,6 @@
 .profile__activity {
+    width: 100%;
+    max-width: 294px;
     font-family: "Inter";
     font-weight: 400;
     font-size: 18px;
@@ -6,6 +8,9 @@
     font-style: normal;
     color: #FFF;
     margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media (max-width: 320px) {

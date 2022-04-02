@@ -1,4 +1,6 @@
 .profile__name {
+    width: 100%;
+    max-width: 294px;
     font-family: 'Inter';
     font-weight: 500;
     font-style: normal;
@@ -7,6 +9,9 @@
     color: #FFF;
     margin-top: 10px;
     margin-bottom: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media (max-width: 420px) {
