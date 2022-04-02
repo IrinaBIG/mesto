@@ -1,0 +1,17 @@
+.profile__data {
+    margin-top: 11px;
+    }
+
+@media (max-width: 950px) {
+    .profile__data {
+    width: 100%;
+    margin-top: 40px;
+    }
+}
+
+@media (max-width: 320px) {
+    .profile__data {
+    width: 100%;
+    margin-top: 16px;
+    }
+}
