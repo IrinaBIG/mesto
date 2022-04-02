@@ -31,14 +31,10 @@ const activeInput = document.querySelector('.profile__activity');
 const activeForm = document.querySelector('.form__active');
 const addActive = activeForm.querySelector('.form__text-active');
 
-
-
 function formSubmitHandler (ev) {
     ev.preventDefault(); 
-       nameInput.textContent = addName.value;
-       activeInput.textContent = addActive.value;
-
-
+    nameInput.textContent = addName.value;
+    activeInput.textContent = addActive.value;
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
