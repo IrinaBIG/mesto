@@ -12,7 +12,7 @@
 
 }
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
     .popup__content {
         margin: 90px auto auto;
     }
