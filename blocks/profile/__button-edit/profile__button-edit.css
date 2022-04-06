@@ -1,4 +1,4 @@
-.profile__link-edit {
+.profile__button-edit {
     width: 25px;
     height: 25px;
     margin-left: 19px;
@@ -11,12 +11,12 @@
     cursor: pointer;
 }
 
-.profile__link-edit:hover {
+.profile__button-edit:hover {
     opacity: 0.6;
 }
 
 @media (max-width: 420px) {
-    .profile__link-edit{
+    .profile__button-edit{
         width: 19px;
         height: 19px;
         margin-top: 21px;
