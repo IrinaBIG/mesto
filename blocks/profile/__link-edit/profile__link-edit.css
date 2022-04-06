@@ -17,8 +17,9 @@
 
 @media (max-width: 420px) {
     .profile__link-edit{
-        width: 18px;
-        height: 18px;
-        margin-top: 7px;
+        width: 19px;
+        height: 19px;
+        margin-top: 21px;
+        margin-left: 10px;
     }
 }

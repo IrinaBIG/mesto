@@ -20,6 +20,15 @@
     text-rendering: auto;
 }
 
+@media (max-width: 800px) {
+    .profile__name {
+        font-size: 35px;
+        line-height: 42px;
+        margin-bottom: 7px;
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 420px) {
     .profile__name {
         font-size: 27px;
