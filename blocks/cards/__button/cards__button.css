@@ -1,7 +1,7 @@
 .cards__button {
-    position: absolute;
+   /* position: absolute;
     right: 0;
-    top: 5px;
+    top: 5px;*/
     width: 22px;
     height: 19px;
     background-image: url(../../../images/like.svg);
@@ -10,6 +10,7 @@
     border: none;
     cursor: pointer;
     background-color: #FFF;
+    align-self: center;
 }
 
 .cards__button:hover {

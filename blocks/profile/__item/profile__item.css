@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: flex-start;
     list-style: none;
-    margin-left: 28px;
 }
 
 @media (max-width: 950px) {
@@ -13,7 +12,7 @@
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 525px) {
     .profile__item {
      margin: 0 auto;
     }

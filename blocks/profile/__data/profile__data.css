@@ -1,11 +1,11 @@
 .profile__data {
-    margin-top: 11px;
-    }
+    margin-top: 13px;
+    margin-left: 30px;
+}
 
-@media (max-width: 950px) {
+@media (max-width: 720px) {
     .profile__data {
-    width: 100%;
-    margin-top: 40px;
+        margin-left: 0;
     }
 }
 
