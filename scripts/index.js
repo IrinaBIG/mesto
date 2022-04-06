@@ -1,6 +1,6 @@
 // код всплывающего окна
 
-const LinkEditProfile = document.querySelector('.profile__link-edit');
+const LinkEditProfile = document.querySelector('.profile__button-edit');
 const modalWindow = document.querySelector('.popup');
 const modalCloseBtn = modalWindow.querySelector('.popup__close');
 
