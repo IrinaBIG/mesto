@@ -19,8 +19,15 @@
     text-rendering: auto;
 }
 
+@media (max-width: 800px) {
+    .profile__activity {
+        max-width: 245px;
+    }
+}
+
 @media (max-width: 320px) {
     .profile__activity {
+        max-width: 189px;
         font-size: 14px;
         line-height: 17px;
     }
