@@ -20,7 +20,7 @@
                     <img class="profile__avatar" src="./images/Avatar.svg" alt="аватар пользователя">
                     <nav class="profile__data">
                         <ul class="profile__list">
-                            <li class="profile__item profile__item_name">
+                            <li class="profile__item">
                                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                                 <button class="profile__button-edit" type="button"></button>
                             </li>
@@ -89,12 +89,12 @@
                     <h4 class="popup__title">Редактировать профиль</h4>
                     <form class="form">
                         <fieldset class="form__name">
-                            <input type="text" class="form__text form__text-name" value="Жак-Ив Кусто" placeholder="Имя" required>
+                            <input type="text" class="form__text form__text-name" name="firstname" value="Жак-Ив Кусто" placeholder="Имя" required>
                         </fieldset>
-                        <fieldset class="form__active">
-                            <input type="text" class="form__text form__text-active" value="Исследователь океана" placeholder="О себе" required>
+                        <fieldset class="form__activity">
+                            <input type="text" class="form__text form__text-activity" name="work" value="Исследователь океана" placeholder="О себе" required>
                         </fieldset>
-                        <button type="submit" class="form__button">Сохранить</button>
+                        <button type="submit" class="form__button" name="save">Сохранить</button>
                     </form>
                 </div>
             </div>
