@@ -39,7 +39,7 @@ function formSubmitHandler (ev) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
-// после отправки на проверку сделала закрываем кнопку после сохранения
+// закрываем кнопку после сохранения
 const closeSaveButton = document.querySelector('.form__button');
 
 closeSaveButton.addEventListener('click', onOverlayClick);
