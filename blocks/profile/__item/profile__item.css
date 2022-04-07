@@ -1,7 +1,7 @@
 .profile__item {
     max-height: 73px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     list-style: none;
 }
