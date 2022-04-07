@@ -19,12 +19,6 @@
         align-self: flex-start;
     }
 }
-/*
-@media (max-width: 720px) {
-    .button {
-        align-self: flex-start;
-    }
-}*/
 
 @media (max-width: 525px) {
     .button {
