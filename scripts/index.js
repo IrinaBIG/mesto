@@ -28,8 +28,8 @@ const nameInput = document.querySelector('.profile__name');
 const nameForm = document.querySelector('.form__name');
 const addName = nameForm.querySelector('.form__text-name');
 const activeInput = document.querySelector('.profile__activity');
-const activeForm = document.querySelector('.form__active');
-const addActive = activeForm.querySelector('.form__text-active');
+const activeForm = document.querySelector('.form__activity');
+const addActive = activeForm.querySelector('.form__text-activity');
 
 function formSubmitHandler (ev) {
     ev.preventDefault();
