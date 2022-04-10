@@ -6,8 +6,8 @@
     font-size: 42px;
     line-height: 50px;
     color: #FFF;
-    margin-top: 10px;
-    margin-bottom: 7px;
+    margin-top: 0;
+    margin-bottom: 0;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -33,7 +33,7 @@
         max-width: 258px;
         font-size: 27px;
         line-height: 33px;
-        margin-bottom: 7px;
+        margin-bottom: 4px;
         margin-left: 26px;
     }
 }
