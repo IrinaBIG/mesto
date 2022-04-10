@@ -20,3 +20,9 @@
         margin: 123px auto 0;
     }
 }
+
+@media (max-width: 320px) {
+    .popup__content {
+        margin: 123px 18px 0;
+    }
+}
