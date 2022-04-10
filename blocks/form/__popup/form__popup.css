@@ -1,4 +1,4 @@
-.form__name {
+.form__popup {
     border: 0;
     width: 100%;
     max-width: 358px;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 400px) {
-    .form__name {
+    .form__popup {
         margin: 0 0 12px;
     }
 }
