@@ -18,14 +18,13 @@ function closeModalWindow() {
 
 modalCloseBtn.addEventListener('click', closeModalWindow)
 
-
 // код редактирования данных
 
 const formElement = document.querySelector('.form');
 const nameInput = document.querySelector('.profile__name');
-const addName = document.querySelector('.form__text_name');
+const addName = document.querySelector('.form__text_type_name');
 const activeInput = document.querySelector('.profile__activity');
-const addActive = document.querySelector('.form__text_activity');
+const addActive = document.querySelector('.form__text_type_activity');
 
 function formSubmitHandler (ev) {
     ev.preventDefault();
