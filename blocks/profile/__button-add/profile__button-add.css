@@ -30,8 +30,6 @@
 
 @media (max-width: 525px) {
     .profile__button-add {
-        width: 282px;
-        height: 51px;
         background-image: url(../../../images/plussmal.svg);
         margin: auto;
         margin-top: 28px;
