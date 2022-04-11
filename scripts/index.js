@@ -12,16 +12,12 @@ function openModalWindow() {
 
 linkEditProfile.addEventListener('click', openModalWindow);
 
-modalCloseBtn.addEventListener('click', function () {
+function closeModalWindow() {
     modalWindow.classList.remove('popup_is-active');
-})
-
-function onOverlayClick(event) {
-    if (event.target === event.currentTarget) {
-        modalWindow.classList.remove('popup_is-active');
-    }
 }
-modalWindow.addEventListener('click', onOverlayClick);
+
+modalCloseBtn.addEventListener('click', closeModalWindow)
+
 
 // код редактирования данных
 
@@ -35,7 +31,7 @@ function formSubmitHandler (ev) {
     ev.preventDefault();
     nameInput.textContent = addName.value;
     activeInput.textContent = addActive.value;
-    onOverlayClick('click');
+    closeModalWindow();
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
