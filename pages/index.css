@@ -1,4 +1,5 @@
 @import url(../vendor/normalize.css);
+@import url(../font-face/inter.css);
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
@@ -30,4 +31,3 @@
 @import url(../blocks/form/__text/form__text.css);
 @import url(../blocks/form/__text/__text-activity/form__text-activity.css);
 @import url(../blocks/form/__text/__text-name/form__text-name.css);
-@import url(../font-face/inter.css);
