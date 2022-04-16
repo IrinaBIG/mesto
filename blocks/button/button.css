@@ -1,0 +1,11 @@
+.button {
+    width: 18px;
+    height: 19px;
+    border: none;
+    cursor: pointer;
+    /* outline: none; */
+}
+
+.button:hover {
+    opacity: .7;
+}
