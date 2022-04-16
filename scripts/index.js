@@ -26,7 +26,7 @@ const addName = document.querySelector('.form__text_type_name');
 const activeInput = document.querySelector('.profile__activity');
 const addActive = document.querySelector('.form__text_type_activity');
 
-function formSubmitHandler (ev) {
+function formSubmitHandler(ev) {
     ev.preventDefault();
     nameInput.textContent = addName.value;
     activeInput.textContent = addActive.value;
@@ -75,6 +75,7 @@ const btnCloseCard = modalWindowCard.querySelector('.popup__close');
 const addCard = modalWindowCard.querySelector('.form');
 
 
+
 function render() {
     const html = CARDS.map(getElement);
     listContainer.append(...html);
@@ -83,13 +84,18 @@ function render() {
 function getElement(item) {
     const getElementTemplate = template.content.cloneNode(true);
     const removeBtn = getElementTemplate.querySelector('.button__remove');
+    const likeBtn = getElementTemplate.querySelector('.cards__button');
     removeBtn.addEventListener('click', handleRemoveCard);
+    likeBtn.addEventListener('click', togglehandleLikeCard);
     const image = getElementTemplate.querySelector('.cards__image');
     image.src = item.link;
     const name = getElementTemplate.querySelector('.cards__place');
     name.textContent = item.name;
     return getElementTemplate;
-  
+
+    function togglehandleLikeCard() {
+        likeBtn.classList.toggle('cards__button_active');
+    }
 }
 render();
 
@@ -99,7 +105,6 @@ function toggleModalWindowCard() {
 
 buttonAddCard.addEventListener('click', toggleModalWindowCard);
 btnCloseCard.addEventListener('click', toggleModalWindowCard);
-
 
 function handleAddCard(ev) {
     ev.preventDefault();
@@ -113,14 +118,7 @@ function handleAddCard(ev) {
 }
 addCard.addEventListener('submit', handleAddCard);
 
-
-
 function handleRemoveCard(evt) {
-   
     const cardRemove = evt.target.closest('.cards__item');
     cardRemove.remove();
 }
-
-
-
-
