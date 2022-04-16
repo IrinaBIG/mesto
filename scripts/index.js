@@ -72,6 +72,8 @@ const template = document.querySelector(".template");
 const buttonAddCard = document.querySelector('.profile__button-add');
 const modalWindowCard = document.querySelector('.popup_place_add-card');
 const btnCloseCard = modalWindowCard.querySelector('.popup__close');
+const addCard = modalWindowCard.querySelector('.form');
+
 
 function render() {
     const html = CARDS.map(getElement);
@@ -80,6 +82,8 @@ function render() {
 
 function getElement(item) {
     const getElementTemplate = template.content.cloneNode(true);
+    const removeBtn = getElementTemplate.querySelector('.button__remove');
+    removeBtn.addEventListener('click', handleRemoveCard);
     const image = getElementTemplate.querySelector('.cards__image');
     image.src = item.link;
     const name = getElementTemplate.querySelector('.cards__place');
@@ -96,7 +100,6 @@ function toggleModalWindowCard() {
 buttonAddCard.addEventListener('click', toggleModalWindowCard);
 btnCloseCard.addEventListener('click', toggleModalWindowCard);
 
-const addCard = modalWindowCard.querySelector('.form');
 
 function handleAddCard(ev) {
     ev.preventDefault();
@@ -108,6 +111,16 @@ function handleAddCard(ev) {
     addCardPlace.value = '';
     addCardLink.value = '';
 }
-
 addCard.addEventListener('submit', handleAddCard);
+
+
+
+function handleRemoveCard(evt) {
+   
+    const cardRemove = evt.target.closest('.cards__item');
+    cardRemove.remove();
+}
+
+
+
 
