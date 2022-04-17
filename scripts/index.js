@@ -75,7 +75,7 @@ const btnCloseCard = modalWindowCard.querySelector('.popup__close');
 const addCard = modalWindowCard.querySelector('.form');
 const modalWindowImage = document.querySelector('.popup__place_image-card');
 const btnCloseImage = modalWindowImage.querySelector('.popup__close');
-const cardsImagePopup = document.querySelector('.cards__image-popup');
+const cardsImagePopup = document.querySelector('.popup__card');
 const titlePopupImage = document.querySelector('.popup__title_place_image');
 
 function render() {
@@ -101,7 +101,7 @@ function getElement(item) {
         cardsImagePopup.src = item.link;
         titlePopupImage.textContent = item.name;
     });
-    // toggleModalWindowImage);
+
     likeBtn.addEventListener('click', function (evt) {
         evt.target.classList.toggle('cards__button_active');
     });
