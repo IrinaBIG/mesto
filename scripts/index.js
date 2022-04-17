@@ -89,7 +89,7 @@ function getElement(item) {
     const likeBtn = getElementTemplate.querySelector('.cards__button');
     const image = getElementTemplate.querySelector('.cards__image');
     const name = getElementTemplate.querySelector('.cards__place');
-    
+
     image.src = item.link;
     image.alt = item.name;
     name.textContent = item.name;
@@ -105,7 +105,7 @@ function getElement(item) {
     likeBtn.addEventListener('click', function (evt) {
         evt.target.classList.toggle('cards__button_active');
     });
- 
+
     return getElementTemplate;
 }
 
@@ -134,7 +134,7 @@ function handleRemoveCard(evt) {
     cardRemove.remove();
 }
 
-function toggleModalWindowImage () {
+function toggleModalWindowImage() {
     modalWindowImage.classList.toggle('popup_is-active');
 }
 
