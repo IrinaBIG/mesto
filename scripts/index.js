@@ -73,8 +73,10 @@ const buttonAddCard = document.querySelector('.profile__button-add');
 const modalWindowCard = document.querySelector('.popup_place_add-card');
 const btnCloseCard = modalWindowCard.querySelector('.popup__close');
 const addCard = modalWindowCard.querySelector('.form');
-
-
+const modalWindowImage = document.querySelector('.popup__place_image-card');
+const btnCloseImage = modalWindowImage.querySelector('.popup__close');
+const cardsImagePopup = document.querySelector('.cards__image-popup');
+const titlePopupImage = document.querySelector('.popup__title_place_image');
 
 function render() {
     const html = CARDS.map(getElement);
@@ -85,19 +87,27 @@ function getElement(item) {
     const getElementTemplate = template.content.cloneNode(true);
     const removeBtn = getElementTemplate.querySelector('.button__remove');
     const likeBtn = getElementTemplate.querySelector('.cards__button');
-    removeBtn.addEventListener('click', handleRemoveCard);
-    likeBtn.addEventListener('click', togglehandleLikeCard);
     const image = getElementTemplate.querySelector('.cards__image');
-    image.src = item.link;
     const name = getElementTemplate.querySelector('.cards__place');
+    
+    image.src = item.link;
+    image.alt = item.name;
     name.textContent = item.name;
-    return getElementTemplate;
 
-    function togglehandleLikeCard() {
-        likeBtn.classList.toggle('cards__button_active');
-    }
+    removeBtn.addEventListener('click', handleRemoveCard);
+
+    image.addEventListener('click', function () {
+        toggleModalWindowImage();
+        cardsImagePopup.src = item.link;
+        titlePopupImage.textContent = item.name;
+    });
+    // toggleModalWindowImage);
+    likeBtn.addEventListener('click', function (evt) {
+        evt.target.classList.toggle('cards__button_active');
+    });
+ 
+    return getElementTemplate;
 }
-render();
 
 function toggleModalWindowCard() {
     modalWindowCard.classList.toggle('popup_is-active');
@@ -116,9 +126,18 @@ function handleAddCard(ev) {
     addCardPlace.value = '';
     addCardLink.value = '';
 }
+
 addCard.addEventListener('submit', handleAddCard);
 
 function handleRemoveCard(evt) {
     const cardRemove = evt.target.closest('.cards__item');
     cardRemove.remove();
 }
+
+function toggleModalWindowImage () {
+    modalWindowImage.classList.toggle('popup_is-active');
+}
+
+btnCloseImage.addEventListener('click', toggleModalWindowImage);
+
+render();
