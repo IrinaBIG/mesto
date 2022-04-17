@@ -26,7 +26,7 @@ const addName = document.querySelector('.form__text_type_name');
 const activeInput = document.querySelector('.profile__activity');
 const addActive = document.querySelector('.form__text_type_activity');
 
-function formSubmitHandler(ev) {
+function handlerSubmitFormProfile(ev) {
     ev.preventDefault();
     nameInput.textContent = addName.value;
     activeInput.textContent = addActive.value;
@@ -34,13 +34,13 @@ function formSubmitHandler(ev) {
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', handlerSubmitFormProfile);
 // закрываем кнопку после сохранения
 
 const cardElement = document.querySelector('.cards');
 const buttonActive = cardElement.querySelector('.cards__button');
 
-const CARDS = [
+const cards = [
     {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -72,14 +72,14 @@ const template = document.querySelector(".template");
 const buttonAddCard = document.querySelector('.profile__button-add');
 const modalWindowCard = document.querySelector('.popup_place_add-card');
 const btnCloseCard = modalWindowCard.querySelector('.popup__close');
-const addCard = modalWindowCard.querySelector('.form');
+const formAddCard = modalWindowCard.querySelector('.form');
 const modalWindowImage = document.querySelector('.popup_place_image-card');
 const btnCloseImage = modalWindowImage.querySelector('.popup__close');
 const cardsImagePopup = document.querySelector('.popup__card');
 const titlePopupImage = document.querySelector('.popup__title_place_image');
 
 function render() {
-    const html = CARDS.map(getElement);
+    const html = cards.map(getElement);
     listContainer.append(...html);
 }
 
@@ -99,6 +99,7 @@ function getElement(item) {
     image.addEventListener('click', function () {
         toggleModalWindowImage();
         cardsImagePopup.src = item.link;
+        cardsImagePopup.alt = item.name;
         titlePopupImage.textContent = item.name;
     });
 
@@ -127,7 +128,7 @@ function handleAddCard(ev) {
     addCardLink.value = '';
 }
 
-addCard.addEventListener('submit', handleAddCard);
+formAddCard.addEventListener('submit', handleAddCard);
 
 function handleRemoveCard(evt) {
     const cardRemove = evt.target.closest('.cards__item');
