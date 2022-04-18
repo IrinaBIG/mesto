@@ -36,7 +36,7 @@ function handleSubmitFormProfile(ev) {
 }
 
 function render() {
-    const html = arrayCards.map(getElement);
+    const html = cards.map(getElement);
     listContainer.append(...html);
 }
 
