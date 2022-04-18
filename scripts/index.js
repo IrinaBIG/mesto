@@ -58,7 +58,6 @@ function getElement(item) {
         openPopup(popupImage);
     });
 
-
     likeBtn.addEventListener('click', function (evt) {
         evt.target.classList.toggle('cards__button_active');
     });
