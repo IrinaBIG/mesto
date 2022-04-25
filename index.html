@@ -37,12 +37,12 @@
             <div class="popup__content">
                 <button class="popup__close" type="button"></button>
                 <h4 class="popup__title">Редактировать профиль</h4>
-                <form class="form" name="form-in-popup">
+                <form class="form" name="form-in-popup" novalidate>
                     <fieldset class="form__popup">
                         <input type="text" class="form__text form__text_type_name" name="firstname" value="Жак-Ив Кусто"
-                            placeholder="Имя" required>
+                            placeholder="Имя" required minlength="2" maxlength="40">
                         <input type="text" class="form__text form__text_type_activity" name="work"
-                            value="Исследователь океана" placeholder="О себе" required>
+                            value="Исследователь океана" placeholder="О себе" required minlength="2" maxlength="200">
                     </fieldset>
                     <button type="submit" class="form__button" name="save" aria-label="Сохранить">Сохранить</button>
                 </form>

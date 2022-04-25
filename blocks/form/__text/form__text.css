@@ -16,6 +16,10 @@
 
 }
 
+.form__text:invalid {
+    border-bottom: 1px solid #FF0000;
+}
+ 
 .form__text::placeholder {
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
