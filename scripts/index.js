@@ -23,6 +23,7 @@ const addCardLink = document.querySelector('.form__input_type_link-place');
 function openPopup(popup) {
     popup.classList.add('popup_is-active');
     setEventListeners(formSelector);
+    
     document.addEventListener('keydown', function (evt) {
         if (evt.key === 'Escape') {
             closePopup(popup);  
