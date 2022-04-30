@@ -55,26 +55,18 @@ function setEventListeners(formSelector) {
     });
 };
 
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList) {
     const buttons = document.querySelectorAll('.form__button')
-
-buttons.forEach((buttonElement) => {
-    
-
-    
-    if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('form__button_disabled');
-        buttonElement.setAttribute('disabled', true);
-    } else {
-        buttonElement.classList.remove('form__button_disabled');
-        buttonElement.removeAttribute('disabled', true);
-    }
-});
+    buttons.forEach((buttonElement) => {
+        if (hasInvalidInput(inputList)) {
+            buttonElement.classList.add('form__button_disabled');
+            buttonElement.setAttribute('disabled', true);
+        } else {
+            buttonElement.classList.remove('form__button_disabled');
+            buttonElement.removeAttribute('disabled', true);
+        }
+    });
 };
-
-
-
-
 
 enableValidation({
     formSelector: '.form',
