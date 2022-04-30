@@ -1,4 +1,4 @@
-.form__text {
+.form__input {
     width: 100%;
     max-width: 349px;
     font-family: 'Inter', Arial, sans-serif;
@@ -16,11 +16,7 @@
 
 }
 
-.form__text:invalid {
-    border-bottom: 1px solid #FF0000;
-}
- 
-.form__text::placeholder {
+.form__input::placeholder {
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
