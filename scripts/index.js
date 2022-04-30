@@ -91,42 +91,6 @@ function handleRemoveCard(evt) {
     cardRemove.remove();
 }
 
-linkEditProfile.addEventListener('click', () => {
-    openPopup(popupProfile);
-   
-    addNameProfileForm.value = nameProfileInput.textContent;
-    addActivityProfile.value = activityProfileInput.textContent;
-    isValid(formSelector, inputSelector);
-    const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
-
-    toggleButtonState(inputList, buttonElement);
-});
-
-popupCloseBtn.addEventListener('click', () => { 
-    closePopup(popupProfile);
-
-
-});
-
-formElementProfile.addEventListener('submit', handleSubmitFormProfile);
-
-formAddCard.addEventListener('submit', handleAddCard);
-
-buttonAddProfile.addEventListener('click', () => {
-    openPopup(popupAddCard); 
-    const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
-    toggleButtonState(inputList, buttonElement);
-   
-});
-
-btnClosePopupCard.addEventListener('click', () => { 
-    closePopup(popupAddCard);
-});
-
-btnClosePopupImage.addEventListener('click', () => {
-    closePopup(popupImage);
-});
-
 function handleClosePopupOverlay() {
     const popupList = Array.from(document.querySelectorAll('.popup'));
     popupList.forEach((popup) => {
@@ -139,6 +103,37 @@ function handleClosePopupOverlay() {
         });
     });
 }
+
+linkEditProfile.addEventListener('click', () => {
+    openPopup(popupProfile);
+    addNameProfileForm.value = nameProfileInput.textContent;
+    addActivityProfile.value = activityProfileInput.textContent;
+    isValid(formSelector, inputSelector);
+    const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
+    toggleButtonState(inputList, buttonElement);
+});
+
+popupCloseBtn.addEventListener('click', () => { 
+    closePopup(popupProfile);
+});
+
+formElementProfile.addEventListener('submit', handleSubmitFormProfile);
+
+formAddCard.addEventListener('submit', handleAddCard);
+
+buttonAddProfile.addEventListener('click', () => {
+    openPopup(popupAddCard); 
+    const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
+    toggleButtonState(inputList, buttonElement); 
+});
+
+btnClosePopupCard.addEventListener('click', () => { 
+    closePopup(popupAddCard);
+});
+
+btnClosePopupImage.addEventListener('click', () => {
+    closePopup(popupImage);
+});
 
 handleClosePopupOverlay();
 
