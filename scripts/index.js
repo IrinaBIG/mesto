@@ -22,6 +22,7 @@ const addCardLink = document.querySelector('.form__input_type_link-place');
 
 function openPopup(popup) {
     popup.classList.add('popup_is-active');
+    setEventListeners(formSelector);
     document.addEventListener('keydown', function (evt) {
         if (evt.key === 'Escape') {
             closePopup(popup);  
@@ -82,8 +83,7 @@ function handleAddCard(ev) {
     const element = getElement({ name: addCardPlace.value, link: addCardLink.value });
     listContainer.prepend(element);
     closePopup(popupAddCard);
-    addCardPlace.value = '';
-    addCardLink.value = '';
+    formAddCard.reset();
 }
 
 function handleRemoveCard(evt) {
@@ -105,12 +105,9 @@ function handleClosePopupOverlay() {
 }
 
 linkEditProfile.addEventListener('click', () => {
-    openPopup(popupProfile);
     addNameProfileForm.value = nameProfileInput.textContent;
     addActivityProfile.value = activityProfileInput.textContent;
-    isValid(formSelector, inputSelector);
-    const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
-    toggleButtonState(inputList, buttonElement);
+    openPopup(popupProfile);
 });
 
 popupCloseBtn.addEventListener('click', () => { 
@@ -123,12 +120,11 @@ formAddCard.addEventListener('submit', handleAddCard);
 
 buttonAddProfile.addEventListener('click', () => {
     openPopup(popupAddCard); 
-    const inputList = Array.from(formSelector.querySelectorAll('.form__input'));
-    toggleButtonState(inputList, buttonElement); 
 });
 
 btnClosePopupCard.addEventListener('click', () => { 
     closePopup(popupAddCard);
+    formAddCard.reset();
 });
 
 btnClosePopupImage.addEventListener('click', () => {
