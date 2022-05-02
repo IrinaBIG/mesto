@@ -10,10 +10,9 @@
     height: 33px;
     color: #000;
     background: #FFF;
-    margin-bottom: 22px;
+    margin-bottom: 21px;
     padding-left: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-
 }
 
 .form__input::placeholder {
