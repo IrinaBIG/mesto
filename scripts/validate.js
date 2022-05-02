@@ -67,4 +67,17 @@ function toggleButtonState(config, inputList, button) {
     }
 };
 
+
+
+// function handleDisabledButtonOpenPopup (formElement, config, button){
+//     if (formElement.checkValidity){
+//         button.classList.add(config.inactiveButtonClass);
+//         button.setAttribute('disabled', true);
+//     } else {
+//     button.classList.remove(config.inactiveButtonClass);
+//     button.removeAttribute('disabled', true);
+// }
+// }
+
+
 enableValidation(config);
