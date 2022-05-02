@@ -19,7 +19,10 @@ const imagePopupCard = document.querySelector('.popup__image-card');
 const titlePopupImage = document.querySelector('.popup__title_place_image');
 const addCardPlace = document.querySelector('.form__input_type_place');
 const addCardLink = document.querySelector('.form__input_type_link-place');
-
+const profileButton = popupProfile.querySelector('.form__button');
+const addButton = popupAddCard.querySelector('.form__button');
+const inputsProfileForm = Array.from(formElementProfile.querySelectorAll('.form__input'));
+const inputsAddCardForm = Array.from(formAddCard.querySelectorAll('.form__input'));
 
 function openPopup(popup) {
     popup.classList.add('popup_is-active');
@@ -29,6 +32,7 @@ function openPopup(popup) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_is-active');
+    document.removeEventListener('keydown', handleClosePopupByEsc);
 }
 
 function handleSubmitFormProfile(ev) {
@@ -91,19 +95,16 @@ function handleClosePopupOverlay(popup) {
 }
 
 function handleClosePopupByEsc(evt) {
-    const popups = Array.from(document.querySelectorAll('.popup'));
-    popups.forEach((popup) => {
-        if (evt.key === 'Escape') {
-            closePopup(popup);
-            document.removeEventListener('keydown', handleClosePopupByEsc);
-        }
-    });
+    const popupOpened = document.querySelector('.popup_is-active');
+    if (evt.key === 'Escape') {
+        closePopup(popupOpened);
+    }
 }
 
 linkEditProfile.addEventListener('click', () => {
     addNameProfileForm.value = nameProfileInput.textContent;
     addActivityProfile.value = activityProfileInput.textContent;
-    setEventListeners(popupProfile, config);
+    toggleButtonState(config, inputsProfileForm, profileButton);
     openPopup(popupProfile);
 });
 
@@ -117,7 +118,7 @@ formAddCard.addEventListener('submit', handleAddCard);
 
 buttonAddProfile.addEventListener('click', () => {
     formAddCard.reset();
-    setEventListeners(popupAddCard, config);
+    toggleButtonState(config, inputsAddCardForm, addButton);
     openPopup(popupAddCard);
 });
 
