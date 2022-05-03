@@ -67,12 +67,4 @@ function toggleButtonState(config, inputList, button) {
     }
 };
 
-
-// function handleDisabledButtonOpenPopup(config, formElement, inputList, inputElement, button) {
-//     // isValid(config, formElement, inputElement);
-//     const clearError = 
-//     toggleButtonState(config, inputList, button);
-// }
-
-
 enableValidation(config);
