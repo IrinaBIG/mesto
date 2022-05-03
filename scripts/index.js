@@ -27,13 +27,13 @@ const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSe
 function openPopup(popup) {
     popup.classList.add('popup_is-active');
     document.addEventListener('keydown', handleClosePopupByEsc);
-    popup.addEventListener('mousedown', handleClosePopupOverlay); 
+    popup.addEventListener('mousedown', handleClosePopupOverlay);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_is-active');
     document.removeEventListener('keydown', handleClosePopupByEsc);
-    popup.removeEventListener('mousedown', handleClosePopupOverlay); 
+    popup.removeEventListener('mousedown', handleClosePopupOverlay);
 }
 
 function handleSubmitFormProfile(ev) {
@@ -88,10 +88,14 @@ function handleRemoveCard(evt) {
 }
 
 function handleClosePopupOverlay(evt) {
-    const popupOpened = document.querySelector('.popup_is-active');
-    if (evt.target === evt.currentTarget) {
-        closePopup(popupOpened);
-    }
+    const isPopupActive = evt.target.classList.contains('popup_is-active');
+    const isOverlayButtonPressed = evt.target === evt.currentTarget;
+    const popups = document.querySelectorAll('.popup');
+    popups.forEach((popup) => {
+        if (isPopupActive && isOverlayButtonPressed) {
+            closePopup(popup);
+        }
+    });
 }
 
 function handleClosePopupByEsc(evt) {
@@ -103,7 +107,7 @@ function handleClosePopupByEsc(evt) {
 
 linkEditProfile.addEventListener('click', () => {
     addNameProfileForm.value = nameProfileInput.textContent;
-    addActivityProfile.value = activityProfileInput.textContent;       
+    addActivityProfile.value = activityProfileInput.textContent;
     toggleButtonState(config, inputsProfileForm, profileButton);
     openPopup(popupProfile);
 });
