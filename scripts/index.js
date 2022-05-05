@@ -23,6 +23,8 @@ const profileButton = popupProfile.querySelector(config.submitButtonSelector);
 const addButton = popupAddCard.querySelector(config.submitButtonSelector);
 const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
 const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
+const popups = document.querySelectorAll('.popup');
+
 
 function openPopup(popup) {
     popup.classList.add('popup_is-active');
@@ -88,19 +90,15 @@ function handleRemoveCard(evt) {
 }
 
 function handleClosePopupOverlay(evt) {
-    const isPopupActive = evt.target.classList.contains('popup_is-active');
-    const isOverlayButtonPressed = evt.target === evt.currentTarget;
-    const popups = document.querySelectorAll('.popup');
-    popups.forEach((popup) => {
-        if (isPopupActive && isOverlayButtonPressed) {
-            closePopup(popup);
-        }
-    });
+    if (evt.target === evt.currentTarget) {
+        const popupOpened = document.querySelector('.popup_is-active');
+        closePopup(popupOpened);
+    }
 }
 
 function handleClosePopupByEsc(evt) {
-    const popupOpened = document.querySelector('.popup_is-active');
     if (evt.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_is-active');
         closePopup(popupOpened);
     }
 }
