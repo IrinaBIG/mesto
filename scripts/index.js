@@ -23,7 +23,6 @@ const profileButton = popupProfile.querySelector(config.submitButtonSelector);
 const addButton = popupAddCard.querySelector(config.submitButtonSelector);
 const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
 const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
-const popups = document.querySelectorAll('.popup');
 
 
 function openPopup(popup) {
