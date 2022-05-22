@@ -1,6 +1,5 @@
 import { Card } from './Card.js';
-import { cards } from './cards.js';
-// import { config } from './validate.js'
+import { cards } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
 const config = {
@@ -12,10 +11,8 @@ const config = {
     errorClass: 'form__error_visible'
 };
 
-
-
 const linkEditProfile = document.querySelector('.profile__button-edit');
-const popup = document.querySelector('.popup');
+// const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_place_profile');
 const popupCloseBtn = popupProfile.querySelector('.popup__close');
 const formElementProfile = document.querySelector('.form');
@@ -24,7 +21,6 @@ const addNameProfileForm = document.querySelector('.form__input_type_name');
 const activityProfileInput = document.querySelector('.profile__activity');
 const addActivityProfile = document.querySelector('.form__input_type_activity');
 const listContainer = document.querySelector('.cards');
-
 const buttonAddProfile = document.querySelector('.profile__button-add');
 const popupAddCard = document.querySelector('.popup_place_add-card');
 const btnClosePopupCard = popupAddCard.querySelector('.popup__close');
@@ -40,15 +36,13 @@ const addButton = popupAddCard.querySelector(config.submitButtonSelector);
 const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
 const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
 
-
-
 const cardFormValidator = new FormValidator(config, formElementProfile);
 cardFormValidator.enableValidation();
-cardFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
+// cardFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
 
 const editFormValidator = new FormValidator(config, formAddCard);
 editFormValidator.enableValidation();
-cardFormValidator.toggleButtonState(config, inputsAddCardForm, profileButton);
+// cardFormValidator.toggleButtonState(config, inputsAddCardForm, profileButton);
 
 function openPopup(popup) {
     popup.classList.add('popup_is-active');
@@ -69,26 +63,25 @@ function handleSubmitFormProfile(ev) {
     closePopup(popupProfile);
 }
 
-// function render() {
-//     const html = cards.map(getElement);
-//     listContainer.append(...html);
-// }
-
-
 const template = document.querySelector('.template').content;
 
+
+
 cards.forEach((item) => {
-    // const card = new Card(item.link, item.name);
     const card = new Card(item.name, item.link, template);
     const cardElement = card.generateCard();
     document.querySelector('.cards').append(cardElement);
-    // document.body.append(cardElement);
 }); 
 
-
-// const card = new Card (
-
-// )
+function handleAddCard(ev) {
+    ev.preventDefault();
+    const card = new Card({ name: addCardPlace.value, link: addCardLink.value });
+    // const card = new Card(item.name, item.link, template);
+    const element = card.generateCard();
+    // const element = getElement({ name: addCardPlace.value, link: addCardLink.value });
+    listContainer.prepend(element);
+    closePopup(popupAddCard);
+}
 // function getElement(item) {
 //     // const getElementTemplate = template.content.cloneNode(true);
 //     const removeBtn = getElementTemplate.querySelector('.button__remove');
@@ -116,12 +109,7 @@ cards.forEach((item) => {
 //     return getElementTemplate;
 // }
 
-function handleAddCard(ev) {
-    ev.preventDefault();
-    const element = getElement({ name: addCardPlace.value, link: addCardLink.value });
-    listContainer.prepend(element);
-    closePopup(popupAddCard);
-}
+
 
 // function handleRemoveCard(evt) {
 //     const cardRemove = evt.target.closest('.cards__item');
@@ -159,7 +147,7 @@ formAddCard.addEventListener('submit', handleAddCard);
 
 buttonAddProfile.addEventListener('click', () => {
     formAddCard.reset();
-    // toggleButtonState(config, inputsAddCardForm, addButton);
+    cardFormValidator.toggleButtonState(config, inputsAddCardForm, addButton);
     openPopup(popupAddCard);
 });
 
@@ -172,3 +160,33 @@ btnClosePopupImage.addEventListener('click', () => {
 });
 
 // render();
+
+
+
+// function handleCreateCardElement(item, template) {
+//     const card = new Card(item, template);
+//     // const card = new Card(item.name, item.link, template);
+//     const cardElement = card.generateCard();
+//     return cardElement;
+// }
+
+// // handleCreateCardElement(template);
+
+
+// cards.forEach((cardElement, item, template) => {
+//     // const card = new Card(item.name, item.link, template);
+//     // const cardElement = card.generateCard();
+//     handleCreateCardElement(item.name, item.link, template);
+//     document.querySelector('.cards').append(cardElement);
+// }); 
+
+// function handleAddCard(ev) {
+//     ev.preventDefault();
+//     handleCreateCardElement(item, template);
+//     // const card = new Card({ name: addCardPlace.value, link: addCardLink.value });
+//     // // const card = new Card(item.name, item.link, template);
+//     // const element = card.generateCard();
+//     // const element = getElement({ name: addCardPlace.value, link: addCardLink.value });
+//     listContainer.prepend(cardElement);
+//     closePopup(popupAddCard);
+// }
