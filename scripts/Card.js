@@ -1,3 +1,6 @@
+import { openPopup } from './utilits.js';
+// import { closePopup } from './utilits.js';
+
 export const cards = [
     {
         name: 'Архыз',
@@ -66,7 +69,7 @@ export class Card {
         document.querySelector('.popup__image-card').src = this._link;
         document.querySelector('.popup__title_place_image').textContent = this._name;
         document.querySelector('.popup__image-card').alt = this._name;
-        document.querySelector('.popup_place_image-card').classList.add('popup_is-active');
+        openPopup(document.querySelector('.popup_place_image-card'));
     };
 
     _setEventListeners() {
