@@ -1,6 +1,8 @@
 import { Card } from './Card.js';
 import { cards } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import { openPopup } from './utilits.js';
+import { closePopup } from './utilits.js';
 
 const config = {
     formSelector: '.form',
@@ -12,7 +14,6 @@ const config = {
 };
 
 const linkEditProfile = document.querySelector('.profile__button-edit');
-// const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_place_profile');
 const popupCloseBtn = popupProfile.querySelector('.popup__close');
 const formElementProfile = document.querySelector('.form');
@@ -27,8 +28,6 @@ const btnClosePopupCard = popupAddCard.querySelector('.popup__close');
 const formAddCard = popupAddCard.querySelector('.form');
 const popupImage = document.querySelector('.popup_place_image-card');
 const btnClosePopupImage = popupImage.querySelector('.popup__close');
-// const imagePopupCard = document.querySelector('.popup__image-card');
-// const titlePopupImage = document.querySelector('.popup__title_place_image');
 const addCardPlace = document.querySelector('.form__input_type_place');
 const addCardLink = document.querySelector('.form__input_type_link-place');
 const profileButton = popupProfile.querySelector(config.submitButtonSelector);
@@ -38,23 +37,9 @@ const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSe
 
 const cardFormValidator = new FormValidator(config, formElementProfile);
 cardFormValidator.enableValidation();
-// cardFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
 
 const editFormValidator = new FormValidator(config, formAddCard);
 editFormValidator.enableValidation();
-// cardFormValidator.toggleButtonState(config, inputsAddCardForm, profileButton);
-
-function openPopup(popup) {
-    popup.classList.add('popup_is-active');
-    document.addEventListener('keydown', handleClosePopupByEsc);
-    popup.addEventListener('mousedown', handleClosePopupOverlay);
-}
-
-function closePopup(popup) {
-    popup.classList.remove('popup_is-active');
-    document.removeEventListener('keydown', handleClosePopupByEsc);
-    popup.removeEventListener('mousedown', handleClosePopupOverlay);
-}
 
 function handleSubmitFormProfile(ev) {
     ev.preventDefault();
@@ -65,69 +50,20 @@ function handleSubmitFormProfile(ev) {
 
 const template = document.querySelector('.template').content;
 
-
-
-cards.forEach((item) => {
+function handleCreateCardElement(item, template) {
     const card = new Card(item.name, item.link, template);
     const cardElement = card.generateCard();
-    document.querySelector('.cards').append(cardElement);
-}); 
+    return cardElement;
+}
+
+cards.forEach((item) => {
+    document.querySelector('.cards').append(handleCreateCardElement(item, template));
+});
 
 function handleAddCard(ev) {
     ev.preventDefault();
-    const card = new Card({ name: addCardPlace.value, link: addCardLink.value });
-    // const card = new Card(item.name, item.link, template);
-    const element = card.generateCard();
-    // const element = getElement({ name: addCardPlace.value, link: addCardLink.value });
-    listContainer.prepend(element);
+    listContainer.prepend(handleCreateCardElement({ name: addCardPlace.value, link: addCardLink.value }, template));
     closePopup(popupAddCard);
-}
-// function getElement(item) {
-//     // const getElementTemplate = template.content.cloneNode(true);
-//     const removeBtn = getElementTemplate.querySelector('.button__remove');
-//     const likeBtn = getElementTemplate.querySelector('.cards__button');
-//     const cardsImage = getElementTemplate.querySelector('.cards__image');
-//     const cardsTitle = getElementTemplate.querySelector('.cards__place');
-
-//     cardsImage.src = item.link;
-//     cardsImage.alt = item.name;
-//     cardsTitle.textContent = item.name;
-
-//     cardsImage.addEventListener('click', () => {
-//         imagePopupCard.src = item.link;
-//         imagePopupCard.alt = item.name;
-//         titlePopupImage.textContent = item.name;
-//         openPopup(popupImage);
-//     });
-
-//     likeBtn.addEventListener('click', function (evt) {
-//         evt.target.classList.toggle('cards__button_active');
-//     });
-
-//     removeBtn.addEventListener('click', handleRemoveCard);
-
-//     return getElementTemplate;
-// }
-
-
-
-// function handleRemoveCard(evt) {
-//     const cardRemove = evt.target.closest('.cards__item');
-//     cardRemove.remove();
-// }
-
-function handleClosePopupOverlay(evt) {
-    if (evt.target === evt.currentTarget) {
-        const popupOpened = document.querySelector('.popup_is-active');
-        closePopup(popupOpened);
-    }
-}
-
-function handleClosePopupByEsc(evt) {
-    if (evt.key === 'Escape') {
-        const popupOpened = document.querySelector('.popup_is-active');
-        closePopup(popupOpened);
-    }
 }
 
 linkEditProfile.addEventListener('click', () => {
@@ -158,35 +94,3 @@ btnClosePopupCard.addEventListener('click', () => {
 btnClosePopupImage.addEventListener('click', () => {
     closePopup(popupImage);
 });
-
-// render();
-
-
-
-// function handleCreateCardElement(item, template) {
-//     const card = new Card(item, template);
-//     // const card = new Card(item.name, item.link, template);
-//     const cardElement = card.generateCard();
-//     return cardElement;
-// }
-
-// // handleCreateCardElement(template);
-
-
-// cards.forEach((cardElement, item, template) => {
-//     // const card = new Card(item.name, item.link, template);
-//     // const cardElement = card.generateCard();
-//     handleCreateCardElement(item.name, item.link, template);
-//     document.querySelector('.cards').append(cardElement);
-// }); 
-
-// function handleAddCard(ev) {
-//     ev.preventDefault();
-//     handleCreateCardElement(item, template);
-//     // const card = new Card({ name: addCardPlace.value, link: addCardLink.value });
-//     // // const card = new Card(item.name, item.link, template);
-//     // const element = card.generateCard();
-//     // const element = getElement({ name: addCardPlace.value, link: addCardLink.value });
-//     listContainer.prepend(cardElement);
-//     closePopup(popupAddCard);
-// }
