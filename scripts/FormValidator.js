@@ -49,7 +49,6 @@ export class FormValidator {
 
     _hasInvalidInput = (inputList) => {
         return inputList.some((inputElement) => {
-            // console.log(inputList);
             return !inputElement.validity.valid;
         });
     };
