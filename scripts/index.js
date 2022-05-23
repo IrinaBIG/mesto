@@ -35,10 +35,10 @@ const addButton = popupAddCard.querySelector(config.submitButtonSelector);
 const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
 const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
 
-const cardFormValidator = new FormValidator(config, formElementProfile);
+const cardFormValidator = new FormValidator(config, formAddCard);
 cardFormValidator.enableValidation();
 
-const editFormValidator = new FormValidator(config, formAddCard);
+const editFormValidator = new FormValidator(config, formElementProfile);
 editFormValidator.enableValidation();
 
 function handleSubmitFormProfile(ev) {
@@ -69,7 +69,7 @@ function handleAddCard(ev) {
 linkEditProfile.addEventListener('click', () => {
     addNameProfileForm.value = nameProfileInput.textContent;
     addActivityProfile.value = activityProfileInput.textContent;
-    cardFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
+    editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
     openPopup(popupProfile);
 });
 
