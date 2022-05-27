@@ -1,17 +1,9 @@
 import { Card } from './Card.js';
-import { cards } from './Card.js';
+import { cards } from './Utils/constants.js';
 import { FormValidator } from './FormValidator.js';
-import { openPopup } from './utilits.js';
-import { closePopup } from './utilits.js';
-
-const config = {
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_disabled',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__error_visible'
-};
+import { openPopup } from './Utils/utils.js';
+import { closePopup } from './Utils/utils.js';
+import { config } from '././Utils/constants.js';
 
 const linkEditProfile = document.querySelector('.profile__button-edit');
 const popupProfile = document.querySelector('.popup_place_profile');
@@ -57,7 +49,7 @@ function handleCreateCardElement(item, template) {
 }
 
 cards.forEach((item) => {
-    document.querySelector('.cards').append(handleCreateCardElement(item, template));
+    listContainer.append(handleCreateCardElement(item, template));
 });
 
 function handleAddCard(ev) {
@@ -66,10 +58,17 @@ function handleAddCard(ev) {
     closePopup(popupAddCard);
 }
 
+// function handleCardClick(name, link) {
+//     устанавливаем ссылку
+//     устанавливаем подпись картинке
+//     открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
+// }
+
 linkEditProfile.addEventListener('click', () => {
     addNameProfileForm.value = nameProfileInput.textContent;
     addActivityProfile.value = activityProfileInput.textContent;
     editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
+    editFormValidator.resetValidation();
     openPopup(popupProfile);
 });
 
@@ -84,6 +83,7 @@ formAddCard.addEventListener('submit', handleAddCard);
 buttonAddProfile.addEventListener('click', () => {
     formAddCard.reset();
     cardFormValidator.toggleButtonState(config, inputsAddCardForm, addButton);
+    cardFormValidator.resetValidation();
     openPopup(popupAddCard);
 });
 

@@ -3,6 +3,7 @@ export class FormValidator {
     constructor(config, form) {
         this._config = config;
         this._form = form;
+
     }
 
     enableValidation() {
@@ -47,11 +48,17 @@ export class FormValidator {
         this._errorElement.textContent = '';
     };
 
-    _hasInvalidInput = (inputList) => {
-        return inputList.some((inputElement) => {
+    _hasInvalidInput = (_inputList) => {
+        return this._inputList.some((inputElement) => {
             return !inputElement.validity.valid;
         });
     };
+
+    resetValidation() {
+        this._inputList.forEach((inputElement) => {
+            this._hideInputError(this._config, this._form, inputElement);
+        });
+    }
 
     toggleButtonState(_config, inputList, _button) {
         if (this._hasInvalidInput(inputList)) {
