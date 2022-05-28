@@ -32,30 +32,29 @@ export const cards = [
         name: 'Байкал',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     },
-];
+]; 
 
-// const globals = {
-// linkEditProfile = document.querySelector('.profile__button-edit'),
-// popupProfile = document.querySelector('.popup_place_profile'),
-// popupCloseBtn = popupProfile.querySelector('.popup__close'),
-// formElementProfile = document.querySelector('.form'),
-// const nameProfileInput = document.querySelector('.profile__name');
-// const addNameProfileForm = document.querySelector('.form__input_type_name');
-// const activityProfileInput = document.querySelector('.profile__activity');
-// const addActivityProfile = document.querySelector('.form__input_type_activity');
-// const listContainer = document.querySelector('.cards');
-// const buttonAddProfile = document.querySelector('.profile__button-add');
-// const popupAddCard = document.querySelector('.popup_place_add-card');
-// const btnClosePopupCard = popupAddCard.querySelector('.popup__close');
-// const formAddCard = popupAddCard.querySelector('.form');
-// const popupImage = document.querySelector('.popup_place_image-card');
-// const btnClosePopupImage = popupImage.querySelector('.popup__close');
-// const addCardPlace = document.querySelector('.form__input_type_place');
-// const addCardLink = document.querySelector('.form__input_type_link-place');
-// const profileButton = popupProfile.querySelector(config.submitButtonSelector);
-// const addButton = popupAddCard.querySelector(config.submitButtonSelector);
-// const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
-// const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
-// const cardFormValidator = new FormValidator(config, formAddCard);
-// const editFormValidator = new FormValidator(config, formElementProfile);
-// } 
+export const linkEditProfile = document.querySelector('.profile__button-edit');
+export const popupProfile = document.querySelector('.popup_place_profile');
+export const popupCloseBtn = popupProfile.querySelector('.popup__close');
+export const formElementProfile = document.querySelector('.form');
+export const nameProfileInput = document.querySelector('.profile__name');
+export const addNameProfileForm = document.querySelector('.form__input_type_name');
+export const activityProfileInput = document.querySelector('.profile__activity');
+export const addActivityProfile = document.querySelector('.form__input_type_activity');
+export const listContainer = document.querySelector('.cards');
+export const buttonAddProfile = document.querySelector('.profile__button-add');
+export const popupAddCard = document.querySelector('.popup_place_add-card');
+export const btnClosePopupCard = popupAddCard.querySelector('.popup__close');
+export const formAddCard = popupAddCard.querySelector('.form');
+export const popupImage = document.querySelector('.popup_place_image-card');
+export const btnClosePopupImage = popupImage.querySelector('.popup__close');
+export const addCardPlace = document.querySelector('.form__input_type_place');
+export const addCardLink = document.querySelector('.form__input_type_link-place');
+export const profileButton = popupProfile.querySelector(config.submitButtonSelector);
+export const addButton = popupAddCard.querySelector(config.submitButtonSelector);
+export const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
+export const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
+export const template = document.querySelector('.template').content;
+// export const popupImageCard = document.querySelector('.popup__image-card');
+// export const popupTitle = document.querySelector('.popup__title_place_image');
