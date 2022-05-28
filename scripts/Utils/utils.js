@@ -10,7 +10,6 @@ export function closePopup(popup) {
     popup.removeEventListener('mousedown', handleClosePopupOverlay);
 }
 
-
 export function handleClosePopupOverlay(evt) {
     if (evt.target === evt.currentTarget) {
         const popupOpened = document.querySelector('.popup_is-active');

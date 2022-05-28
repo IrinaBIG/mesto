@@ -1,31 +1,32 @@
 import { Card } from './Card.js';
 import { cards } from './Utils/constants.js';
 import { FormValidator } from './FormValidator.js';
-import { openPopup } from './Utils/utils.js';
-import { closePopup } from './Utils/utils.js';
-import { config } from '././Utils/constants.js';
-
-const linkEditProfile = document.querySelector('.profile__button-edit');
-const popupProfile = document.querySelector('.popup_place_profile');
-const popupCloseBtn = popupProfile.querySelector('.popup__close');
-const formElementProfile = document.querySelector('.form');
-const nameProfileInput = document.querySelector('.profile__name');
-const addNameProfileForm = document.querySelector('.form__input_type_name');
-const activityProfileInput = document.querySelector('.profile__activity');
-const addActivityProfile = document.querySelector('.form__input_type_activity');
-const listContainer = document.querySelector('.cards');
-const buttonAddProfile = document.querySelector('.profile__button-add');
-const popupAddCard = document.querySelector('.popup_place_add-card');
-const btnClosePopupCard = popupAddCard.querySelector('.popup__close');
-const formAddCard = popupAddCard.querySelector('.form');
-const popupImage = document.querySelector('.popup_place_image-card');
-const btnClosePopupImage = popupImage.querySelector('.popup__close');
-const addCardPlace = document.querySelector('.form__input_type_place');
-const addCardLink = document.querySelector('.form__input_type_link-place');
-const profileButton = popupProfile.querySelector(config.submitButtonSelector);
-const addButton = popupAddCard.querySelector(config.submitButtonSelector);
-const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
-const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
+import { openPopup, closePopup } from './Utils/utils.js';
+import {
+    config,
+    linkEditProfile,
+    popupProfile,
+    popupCloseBtn,
+    formElementProfile,
+    nameProfileInput,
+    addNameProfileForm,
+    activityProfileInput,
+    addActivityProfile,
+    listContainer,
+    popupAddCard,
+    buttonAddProfile,
+    btnClosePopupCard,
+    formAddCard,
+    popupImage,
+    btnClosePopupImage,
+    addCardPlace,
+    addCardLink,
+    profileButton,
+    addButton,
+    inputsProfileForm,
+    inputsAddCardForm,
+    template
+} from '././Utils/constants.js';
 
 const cardFormValidator = new FormValidator(config, formAddCard);
 cardFormValidator.enableValidation();
@@ -40,10 +41,8 @@ function handleSubmitFormProfile(ev) {
     closePopup(popupProfile);
 }
 
-const template = document.querySelector('.template').content;
-
 function handleCreateCardElement(item, template) {
-    const card = new Card(item.name, item.link, template);
+    const card = new Card(item.name, item.link, template, handleCardClick);
     const cardElement = card.generateCard();
     return cardElement;
 }
@@ -58,11 +57,9 @@ function handleAddCard(ev) {
     closePopup(popupAddCard);
 }
 
-// function handleCardClick(name, link) {
-//     устанавливаем ссылку
-//     устанавливаем подпись картинке
-//     открываем попап универсальной функцией, которая навешивает обработчик Escape внутри себя
-// }
+function handleCardClick() {
+    openPopup(popupImage);
+}
 
 linkEditProfile.addEventListener('click', () => {
     addNameProfileForm.value = nameProfileInput.textContent;
