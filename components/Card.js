@@ -1,7 +1,5 @@
 export class Card {
-    _name;
-    _link;
-   
+
     constructor(name, link, templateSelector, handleCardClick) {
         this._name = name;
         this._link = link;
@@ -49,10 +47,10 @@ export class Card {
         });
 
         this._cardImage.addEventListener('click', () => {
-            this._popupImage.src = this._link;
-            this._popupImage.alt = this._name;
-            this._popupTitle.textContent = this._name;
+            // this._handleCardClick();
             this._handleCardClick(this._name, this._link);
+
         });
     }
 } 
+
