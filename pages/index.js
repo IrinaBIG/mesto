@@ -2,9 +2,9 @@ import { Card } from '../components/Card.js';
 import { cards } from '../scripts/Utils/constants.js';
 import Section from '../components/Section.js';
 import { FormValidator } from '../components/FormValidator.js';
-import {PopupWithImage} from '../components/PopupWithImage.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import UserInfo from '../components/UserInfo.js';
+// import UserInfo from '../components/UserInfo.js';
 import {
     config,
     linkEditProfile,
@@ -30,6 +30,7 @@ import {
     inputsAddCardForm,
     template
 } from '../scripts/Utils/constants.js';
+// import { openPopup } from '../scripts/Utils/utils.js';
 
 const cardFormValidator = new FormValidator(config, formAddCard);
 cardFormValidator.enableValidation();
@@ -47,18 +48,19 @@ const cardList = new Section({ data: cards, renderer: (item) => {
 
 cardList.renderItems();
 
-const imagePopupForm = new PopupWithImage(popupImage);
-// imagePopupForm.setEventListeners();
+const imagePopupForm = new PopupWithImage('.popup_place_image-card');
+// const imagePopupForm = new PopupWithImage(popupImage);
+imagePopupForm.setEventListeners();
 
 function handleCardClick () {
-    open(imagePopupForm);
+    openPopup(data);
 };
 
 // function handleFormSubmit() {
 
 // }
 
-const user = new UserInfo ();
+// const user = new UserInfo ();
 
 const profilePopupForm = new PopupWithForm({handleFormSubmit: (data) => {
     user.setUserInfo(data);
@@ -81,7 +83,7 @@ buttonAddProfile.addEventListener('click', () => {
     formAddCard.reset();
     cardFormValidator.toggleButtonState(config, inputsAddCardForm, addButton);
     cardFormValidator.resetValidation();
-    open(addPopupForm);
+    openPopup(addPopupForm);
 });
 
 
@@ -110,7 +112,7 @@ linkEditProfile.addEventListener('click', () => {
     addActivityProfile.value = activityProfileInput.textContent;
     editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
     editFormValidator.resetValidation();
-    open(popupProfile);
+    openPopup(popupProfile);
 });
 
 formElementProfile.addEventListener('submit', handleSubmitFormProfile);

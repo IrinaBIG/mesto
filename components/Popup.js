@@ -5,13 +5,13 @@ export class Popup {
         console.log(popupSelector); // не пойму, почему здесь только один попап выводит
     };
 
-   open() {
+   openPopup() {
         this._popupSelector.querySelector('.popup').classList.add('popup_is-active');       
         document.addEventListener('keydown', this._handleEscClose);
         document.addEventListener('mousedown', this._handleClosePopupOverlay);
     }
     
-    close() {
+    closePopup() {
         this._popupSelector.classList.remove('popup_is-active');
         document.removeEventListener('keydown', this._handleEscClose);
         this._popup.removeEventListener('mousedown', this._handleClosePopupOverlay);
@@ -32,6 +32,6 @@ export class Popup {
     }
 
     setEventListeners () {       
-        this._CloseBtn.addEventListener('click', () => this.close());       
+        this._CloseBtn.addEventListener('click', () => this.closePopup());       
     }
 }
