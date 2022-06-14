@@ -38,22 +38,24 @@ cardFormValidator.enableValidation();
 const editFormValidator = new FormValidator(config, formElementProfile);
 editFormValidator.enableValidation();
 
+const imagePopupForm = new PopupWithImage('.popup_place_image-card');
+// const imagePopupForm = new PopupWithImage(popupImage);
+imagePopupForm.setEventListeners();
+
 const cardList = new Section({ data: cards, renderer: (item) => {
     const card = new Card(item.name, item.link, template, handleCardClick);
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
-    return cardElement;          
+    return cardElement;      
     },
 }, listContainer);
 
 cardList.renderItems();
 
-const imagePopupForm = new PopupWithImage('.popup_place_image-card');
-// const imagePopupForm = new PopupWithImage(popupImage);
-imagePopupForm.setEventListeners();
 
-function handleCardClick () {
-    openPopup(data);
+
+function handleCardClick (name, link) {
+    imagePopupForm.openPopup(name, link);
 };
 
 // function handleFormSubmit() {
@@ -62,14 +64,15 @@ function handleCardClick () {
 
 // const user = new UserInfo ();
 
-const profilePopupForm = new PopupWithForm({handleFormSubmit: (data) => {
+const profilePopupForm = new PopupWithForm('.popup_place_profile', {handleFormSubmit: (data) => {
     user.setUserInfo(data);
 }});
 profilePopupForm.setEventListeners();
 
-const addPopupForm = new PopupWithForm({handleFormSubmit: (data) => {
+const addPopupForm = new PopupWithForm('.popup_place_add-card', {handleFormSubmit: (data) => {
     cardList.addItem(data);
 }});
+addPopupForm.setEventListeners();
 
 // const profilePopupForm = new PopupWithForm({ popupSelector: popupAddCard,  
 //     handleAddCard: (formData) => {
@@ -83,7 +86,7 @@ buttonAddProfile.addEventListener('click', () => {
     formAddCard.reset();
     cardFormValidator.toggleButtonState(config, inputsAddCardForm, addButton);
     cardFormValidator.resetValidation();
-    openPopup(addPopupForm);
+    addPopupForm.openPopup();
 });
 
 
@@ -112,7 +115,7 @@ linkEditProfile.addEventListener('click', () => {
     addActivityProfile.value = activityProfileInput.textContent;
     editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
     editFormValidator.resetValidation();
-    openPopup(popupProfile);
+    profilePopupForm.openPopup();
 });
 
 formElementProfile.addEventListener('submit', handleSubmitFormProfile);
