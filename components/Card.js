@@ -36,8 +36,6 @@ export class Card {
     };
 
     _setEventListeners() {
-        this._popupImage = document.querySelector('.popup__image-card');
-        this._popupTitle = document.querySelector('.popup__title_place_image');
         this._element.querySelector('.cards__button').addEventListener('click', () => {
             this._handleLikeClick();
         });
