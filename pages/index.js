@@ -42,7 +42,7 @@ const addPopupForm = new PopupWithForm('.popup_place_add-card', () => {
 
 // const user = new UserInfo ('.form__input_type_name','.form__input_type_activity');
 const user = new UserInfo ('.profile__name','.profile__activity');
-
+console.log(user);
 
 const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
     user.setUserInfo(data);
@@ -71,8 +71,8 @@ buttonAddProfile.addEventListener('click', () => {
     addPopupForm.openPopup();
 });
 
-linkEditProfile.addEventListener('click', () => {
-    user.getUserInfo();
+linkEditProfile.addEventListener('click', (name, activity) => {
+    user.getUserInfo(name, activity);
     editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
     editFormValidator.resetValidation();
     profilePopupForm.openPopup();
