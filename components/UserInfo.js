@@ -1,25 +1,20 @@
 export default class UserInfo {
-    constructor ( name, activity ) {
-        this._name = document.querySelector(name);
-        console.log(this._name);
-        this._activity = document.querySelector(activity);
-        // console.log(this._activity);
-        
+    constructor({ nameSelector, activitySelector }) {
+        this._nameSelector = nameSelector;
+        this._activitySelector = activitySelector;
+        this._userName = document.querySelector('.profile__name');
+        this._userActivity = document.querySelector('.profile__activity');
     }
-    
 
     getUserInfo() {
         return {
-            name: this._name.textContent,  
-            activity: this._activity.textContent
+            nameSelector: this._nameSelector.value = this._userName.textContent,
+            activitySelector: this._activitySelector.value = this._userActivity.textContent
         }
     }
 
-    setUserInfo(data) {
-        this._name.textContent = data.name;
-        this._activity.textContent = data.activity;
+    setUserInfo() {
+        this._userName.textContent = this._nameSelector.value;
+        this._userActivity.textContent = this._activitySelector.value;
     }
 }
-
-    // addNameProfileForm.value = nameProfileInput.textContent;
-    // addActivityProfile.value = activityProfileInput.textContent;

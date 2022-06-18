@@ -18,9 +18,9 @@ export default class PopupWithForm extends Popup {
         });
         // возвращаем объект значений
         return this._formValues;
-    } 
-  
-    closePopup(){
+    }
+
+    closePopup() {
         super.closePopup();
         this._form.reset();
     }
@@ -32,5 +32,5 @@ export default class PopupWithForm extends Popup {
             this._handleFormSubmit(this._getInputValues());
             this.closePopup();
         })
-    } 
+    }
 }
