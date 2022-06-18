@@ -1,7 +1,7 @@
 .profile__item {
     grid-area: item;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     list-style: none;
 }
 
@@ -16,7 +16,6 @@
         margin: 0 auto;
     }
 }
-
 
 @media (max-width: 320px) {
     .profile__item {

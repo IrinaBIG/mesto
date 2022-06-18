@@ -1,3 +1,4 @@
+import './index.css'; // добавьте импорт главного файла стилей 
 import { Card } from '../components/Card.js';
 import { cards } from '../scripts/Utils/constants.js';
 import Section from '../components/Section.js';
