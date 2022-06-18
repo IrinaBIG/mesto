@@ -56,5 +56,3 @@ export const addButton = popupAddCard.querySelector(config.submitButtonSelector)
 export const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
 export const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
 export const template = document.querySelector('.template').content;
-// export const popupImageCard = document.querySelector('.popup__image-card');
-// export const popupTitle = document.querySelector('.popup__title_place_image');
