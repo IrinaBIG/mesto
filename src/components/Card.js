@@ -3,7 +3,8 @@ export class Card {
     constructor(name, link, templateSelector, handleCardClick) {
         this._name = name;
         this._link = link;
-        this._template = templateSelector;
+        this._template = document.querySelector(templateSelector).content;
+        // this._template = templateSelector;
         this._handleCardClick = handleCardClick;
     }
 
@@ -22,13 +23,13 @@ export class Card {
         // Добавим данные
         this._cardImage.src = this._link;
         this._cardPlace.textContent = this._name;
-        this._cardPlace.alt = this._name;
+        this._cardImage.alt = this._name;
         // Вернём элемент наружу
         return this._element;
     }
 
     _handleLikeClick() {
-        this._element.querySelector('.cards__button').classList.toggle('cards__button_active');
+        this._cardsButton.classList.toggle('cards__button_active');
     };
 
     _handleRemoveCard() {
@@ -36,7 +37,9 @@ export class Card {
     };
 
     _setEventListeners() {
-        this._element.querySelector('.cards__button').addEventListener('click', () => {
+        this._cardsButton = this._element.querySelector('.cards__button');
+
+        this._cardsButton.addEventListener('click', () => {
             this._handleLikeClick();
         });
 

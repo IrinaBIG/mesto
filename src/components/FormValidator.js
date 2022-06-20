@@ -3,18 +3,17 @@ export class FormValidator {
     constructor(config, form) {
         this._config = config;
         this._form = form;
-
     }
 
     enableValidation() {
-        this._form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
+        // this._form.addEventListener('submit', (evt) => {
+        //     evt.preventDefault();
+        // });
 
         this._setEventListeners(this._form, this._config);
     };
 
-    _setEventListeners = (_form, _config) => {
+    _setEventListeners = () => {
         this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
         this._button = this._form.querySelector(this._config.submitButtonSelector);
         this.toggleButtonState(this._config, this._inputList, this._button);
