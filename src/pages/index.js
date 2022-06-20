@@ -41,19 +41,17 @@ const cardList = new Section({
     },
 }, '.cards');
 
-const popupAddForm = new PopupWithForm('.popup_place_add-card', (item) => {
-    console.log(item);
-    createCard(item, '.template', handleCardClick);
-    cardList.addItem(createCard(item, '.template', handleCardClick));
+const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+    const cardData = {name: data['newPlace'], link: data['linkPlace']};
+    createCard(cardData, '.template', handleCardClick);
+    cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
-// console.log(user);
+console.log(user);
 
-const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-    console.log(data);
+const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => { 
     user.setUserInfo(data);
-    // user.setUserInfo({ nameSelector: addNameProfileForm.value, activitySelector: addActivityProfile.value });
 });
 
 cardList.renderItems();
