@@ -10,11 +10,8 @@ import {
     config,
     linkEditProfile,
     formElementProfile,
-    listContainer,
     buttonAddProfile,
     formAddCard,
-    addCardPlace,
-    addCardLink,
     profileButton,
     addButton,
     inputsProfileForm,
@@ -23,7 +20,6 @@ import {
     inputsAddCardForm,
     nameProfileInput,
     activityProfileInput,
-    // template
 } from '../scripts/Utils/constants.js';
 
 const cardFormValidator = new FormValidator(config, formAddCard);
@@ -42,15 +38,14 @@ const cardList = new Section({
 }, '.cards');
 
 const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-    const cardData = {name: data['newPlace'], link: data['linkPlace']};
+    const cardData = { name: data['newPlace'], link: data['linkPlace'] };
     createCard(cardData, '.template', handleCardClick);
     cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
-console.log(user);
 
-const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => { 
+const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
     user.setUserInfo(data);
 });
 
@@ -77,7 +72,10 @@ buttonAddProfile.addEventListener('click', () => {
 });
 
 linkEditProfile.addEventListener('click', () => {
+    const userData = user.getUserInfo({ firstname: nameProfileInput, work: activityProfileInput });
+    addNameProfileForm.value = userData.firstname;
+    addActivityProfile.value = userData.work;
     editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
     editFormValidator.resetValidation();
-    profilePopupForm.openPopup(user.getUserInfo());
+    profilePopupForm.openPopup();
 });
