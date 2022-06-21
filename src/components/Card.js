@@ -4,7 +4,6 @@ export class Card {
         this._name = name;
         this._link = link;
         this._template = document.querySelector(templateSelector).content;
-        // this._template = templateSelector;
         this._handleCardClick = handleCardClick;
     }
 
@@ -51,5 +50,4 @@ export class Card {
             this._handleCardClick(this._name, this._link);
         });
     }
-} 
-
+}
