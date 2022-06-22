@@ -43,7 +43,7 @@ export class FormValidator {
         this._errorElement.textContent = '';
     };
 
-    _hasInvalidInput = (_inputList) => {
+    _hasInvalidInput = () => {
         return this._inputList.some((inputElement) => {
             return !inputElement.validity.valid;
         });
