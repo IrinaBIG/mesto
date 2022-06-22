@@ -3,44 +3,44 @@ export class FormValidator {
     constructor(config, form) {
         this._config = config;
         this._form = form;
+
     }
 
     enableValidation() {
         // this._form.addEventListener('submit', (evt) => {
         //     evt.preventDefault();
         // });
-
-        this._setEventListeners(this._form, this._config);
+        this._setEventListeners();
     };
 
     _setEventListeners = () => {
         this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
         this._button = this._form.querySelector(this._config.submitButtonSelector);
-        this.toggleButtonState(this._config, this._inputList, this._button);
+        this.toggleButtonState(this._inputList, this._button);
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this._isValid(this._config, this._form, inputElement);
-                this.toggleButtonState(this._config, this._inputList, this._button);
+                this._isValid(inputElement);
+                this.toggleButtonState(this._inputList, this._button);
             });
         });
     };
 
-    _isValid = (_config, _form, inputElement) => {
+    _isValid = (inputElement) => {
         if (!inputElement.validity.valid) {
-            this._showInputError(this._config, this._form, inputElement, inputElement.validationMessage);
+            this._showInputError(inputElement, inputElement.validationMessage);
         } else {
-            this._hideInputError(this._config, this._form, inputElement);
+            this._hideInputError(inputElement);
         };
     };
 
-    _showInputError = (_config, _form, inputElement, errorMessage) => {
+    _showInputError = (inputElement, errorMessage) => {
         this._errorElement = this._form.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.add(this._config.inputErrorClass);
         this._errorElement.textContent = errorMessage;
         this._errorElement.classList.add(this._config.errorClass);
     };
 
-    _hideInputError = (_config, _form, inputElement) => {
+    _hideInputError = (inputElement) => {
         this._errorElement = this._form.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.remove(this._config.inputErrorClass);
         this._errorElement.classList.remove(this._config.errorClass);
@@ -55,7 +55,7 @@ export class FormValidator {
 
     resetValidation() {
         this._inputList.forEach((inputElement) => {
-            this._hideInputError(this._config, this._form, inputElement);
+            this._hideInputError(inputElement);
         });
     }
 
