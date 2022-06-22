@@ -39,7 +39,7 @@ const cardList = new Section({
 
 const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-    createCard(cardData, '.template', handleCardClick);
+    // createCard(cardData, '.template', handleCardClick);
     cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
@@ -66,7 +66,7 @@ profilePopupForm.setEventListeners();
 popupAddForm.setEventListeners();
 
 buttonAddProfile.addEventListener('click', () => {
-    cardFormValidator.toggleButtonState(config, inputsAddCardForm, addButton);
+    cardFormValidator.toggleButtonState();
     cardFormValidator.resetValidation();
     popupAddForm.openPopup();
 });
@@ -75,7 +75,7 @@ linkEditProfile.addEventListener('click', () => {
     const userData = user.getUserInfo({ firstname: nameProfileInput, work: activityProfileInput });
     addNameProfileForm.value = userData.firstname;
     addActivityProfile.value = userData.work;
-    editFormValidator.toggleButtonState(config, inputsProfileForm, profileButton);
+    editFormValidator.toggleButtonState();
     editFormValidator.resetValidation();
     profilePopupForm.openPopup();
 });
