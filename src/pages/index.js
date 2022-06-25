@@ -80,11 +80,12 @@ linkEditProfile.addEventListener('click', () => {
     profilePopupForm.openPopup();
 });
 
-const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/cards');
+// const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/cards');
+const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43');
 
 api.getCards()
 .then((cards) => {
-    console.log('222');
+    // console.log('222');
     const cardList = new Section({
         data: cards, renderer: (card) => {
             cardList.addItem(createCard(card));
@@ -96,5 +97,5 @@ api.getCards()
     console.log(err);
 })
 
-console.log('1111');
+// console.log('1111');
 
