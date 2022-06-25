@@ -108,7 +108,7 @@ api.getAvatar ()
 })
 
 api.addAvatar(data)
-.then((user) => {
+.then(() => {
     const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
