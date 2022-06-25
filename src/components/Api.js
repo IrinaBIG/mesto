@@ -6,7 +6,7 @@ export default class Api {
   
 
     getCards() {
-        return fetch(this._baseUrl, {
+        return fetch(this._url, {
           headers: {
             // authorization: this._token,
             authorization: '95e5bb8d-852f-4443-ae3b-fcac38693ef0',
