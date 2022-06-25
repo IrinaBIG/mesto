@@ -56,7 +56,7 @@ export default class Api {
     const body = {
       name: name,
       about: about
-    }
+    };
 
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
