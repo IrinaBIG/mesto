@@ -39,6 +39,7 @@ export const popupProfile = document.querySelector('.popup_place_profile');
 export const popupCloseBtn = popupProfile.querySelector('.popup__close');
 export const formElementProfile = document.querySelector('.form');
 export const nameProfileInput = document.querySelector('.profile__name');
+export const avatarProfileInput = document.querySelector('.profile__avatar');
 export const addNameProfileForm = document.querySelector('.form__input_type_name');
 export const activityProfileInput = document.querySelector('.profile__activity');
 export const addActivityProfile = document.querySelector('.form__input_type_activity');
