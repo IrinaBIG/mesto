@@ -21,6 +21,7 @@ import {
     inputsAddCardForm,
     nameProfileInput,
     activityProfileInput,
+    avatarProfileInput,
 } from '../scripts/Utils/constants.js';
 
 const cardFormValidator = new FormValidator(config, formAddCard);
@@ -43,11 +44,11 @@ const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
     cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
-// const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
+const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-// const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-//     user.setUserInfo(data);
-// });
+const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+    user.setUserInfo(data);
+});
 
 // cardList.renderItems();
 
@@ -61,7 +62,7 @@ function handleCardClick(name, link) {
     imagePopupForm.openPopup(name, link);
 };
 
-// profilePopupForm.setEventListeners();
+profilePopupForm.setEventListeners();
 
 popupAddForm.setEventListeners();
 
@@ -97,14 +98,18 @@ api.getCards()
 })
 
 api.getAvatar ()
-.then((name, about) => {
-    const user = new UserInfo({ nameSelector: name, activitySelector: about, avatarSelector: avatar });
-    const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-        user.setUserInfo(data);
-    });
-    profilePopupForm.setEventListeners();
+.then((name, about, avatar) => {
+    nameProfileInput.textContent = name;
+    activityProfileInput.textContent = about;
+    avatarProfileInput.src = avatar;
 })
 .catch((err) => {
     console.log(err);
 })
 
+// const user = new UserInfo({ nameSelector: name, activitySelector: about, avatarSelector: avatar });
+//     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+//         user.setUserInfo(data);
+//     });
+//     profilePopupForm.setEventListeners();
+// })
