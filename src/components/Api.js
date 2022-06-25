@@ -57,7 +57,7 @@ export default class Api {
       name: name,
       about: about
     }
-    return fetch(`${this._url}/users/me`, {
+    fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify(body)
