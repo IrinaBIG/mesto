@@ -42,9 +42,7 @@ export default class Api {
 
   getAvatar() {
     return fetch(`${this._url}/users/me`, {
-      headers: {
-        headers: this._headers
-      }
+      headers: this._headers
     })
       .then((res) => {
         if (res.ok) {
