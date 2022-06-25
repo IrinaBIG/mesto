@@ -98,10 +98,10 @@ api.getCards()
 })
 
 api.getAvatar ()
-.then((name, about, avatar) => {
-    nameProfileInput.textContent = name;
-    activityProfileInput.textContent = about;
-    avatarProfileInput.src = avatar;
+.then(([user]) => {
+    nameProfileInput.textContent = user.name;
+    activityProfileInput.textContent = user.about;
+    avatarProfileInput.src = user.avatar;
 })
 .catch((err) => {
     console.log(err);
