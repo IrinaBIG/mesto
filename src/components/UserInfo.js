@@ -1,16 +1,16 @@
 export default class UserInfo {
 
-    constructor({nameSelector, activitySelector, avatarSelector}) {
+    constructor({nameSelector, activitySelector}) {
         this._nameElement = document.querySelector(nameSelector);
         this._activityElement = document.querySelector(activitySelector);
-        this._avatarElement = document.querySelector(avatarSelector);
+        // this._avatarElement = document.querySelector(avatarSelector);
     };
 
     getUserInfo() {
         return {
             firstname: this._nameElement.textContent,
             work: this._activityElement.textContent,
-            avatar: this._avatarElement.src
+            // avatar: this._avatarElement.src
         }
     };
 

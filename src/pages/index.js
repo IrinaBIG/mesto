@@ -107,7 +107,7 @@ api.getAvatar ()
     console.log(err);
 })
 
-api.addAvatar(data)
+api.addAvatar()
 .then(() => {
     const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
