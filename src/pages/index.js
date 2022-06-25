@@ -6,6 +6,7 @@ import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 import {
     config,
     linkEditProfile,
@@ -31,15 +32,14 @@ editFormValidator.enableValidation();
 const imagePopupForm = new PopupWithImage('.popup_place_image-card');
 imagePopupForm.setEventListeners();
 
-const cardList = new Section({
-    data: cards, renderer: (item) => {
-        cardList.addItem(createCard(item));
-    },
-}, '.cards');
+// const cardList = new Section({
+//     data: cards, renderer: (item) => {
+//         cardList.addItem(createCard(item));
+//     },
+// }, '.cards');
 
 const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-    // createCard(cardData, '.template', handleCardClick);
     cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
@@ -49,7 +49,7 @@ const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
     user.setUserInfo(data);
 });
 
-cardList.renderItems();
+// cardList.renderItems();
 
 function createCard(item) {
     const card = new Card(item.name, item.link, '.template', handleCardClick);
@@ -79,3 +79,22 @@ linkEditProfile.addEventListener('click', () => {
     editFormValidator.resetValidation();
     profilePopupForm.openPopup();
 });
+
+const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/cards');
+
+api.getCards()
+.then((cards) => {
+    console.log('222');
+    const cardList = new Section({
+        data: cards, renderer: (card) => {
+            cardList.addItem(createCard(card));
+        },
+    }, '.cards');
+    cardList.renderItems();
+})
+.catch((err) => {
+    console.log(err);
+})
+
+console.log('1111');
+
