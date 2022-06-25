@@ -97,8 +97,8 @@ api.getCards()
 })
 
 api.getAvatar ()
-.then(() => {
-    const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
+.then((name, about) => {
+    const user = new UserInfo({ nameSelector: name, activitySelector: about, avatarSelector: avatar });
     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
         user.setUserInfo(data);
     });
