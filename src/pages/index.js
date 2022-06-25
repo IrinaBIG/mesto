@@ -44,7 +44,7 @@ const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
     cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
-// const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
+const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
 // const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
 //     user.setUserInfo(data);
@@ -109,8 +109,7 @@ api.getAvatar ()
 
 api.addAvatar()
 .then(() => {
-    const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
-
+    
     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
         user.setUserInfo(user.name, user.about);
     });
