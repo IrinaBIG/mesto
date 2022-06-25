@@ -52,6 +52,23 @@ export default class Api {
       })
   }
 
+  addAvatar(name, about) {
+    const body = {
+      name: name,
+      about: about
+    }
+    return fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify(body)
+    })
+    .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+            return Promise.reject(`Возникла ошибка: ${res.status}`);
+          })
+  }
 
 }
 

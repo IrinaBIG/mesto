@@ -44,11 +44,11 @@ const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
     cardList.addItem(createCard(cardData, '.template', handleCardClick));
 });
 
-const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
+// const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-    user.setUserInfo(data);
-});
+// const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+//     user.setUserInfo(data);
+// });
 
 // cardList.renderItems();
 
@@ -62,7 +62,7 @@ function handleCardClick(name, link) {
     imagePopupForm.openPopup(name, link);
 };
 
-profilePopupForm.setEventListeners();
+// profilePopupForm.setEventListeners();
 
 popupAddForm.setEventListeners();
 
@@ -107,9 +107,15 @@ api.getAvatar ()
     console.log(err);
 })
 
-// const user = new UserInfo({ nameSelector: name, activitySelector: about, avatarSelector: avatar });
-//     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-//         user.setUserInfo(data);
-//     });
-//     profilePopupForm.setEventListeners();
-// })
+api.addAvatar(data)
+.then((user) => {
+    const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
+
+    const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+        user.setUserInfo(user.name, user.about);
+    });
+    profilePopupForm.setEventListeners();
+})
+.catch((err) => {
+    console.log(err);
+})
