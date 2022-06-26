@@ -58,19 +58,23 @@ const cardList = new Section({
 
 //  });
 
-const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-    // const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-    addCardHandler();
-    // cardList.addItem(createCard(api.addCard(data['newPlace'], data['linkPlace'])));
-    // cardList.addItem(createCard(cardData));
-});
+const popupAddForm = new PopupWithForm('.popup_place_add-card', addCardHandler);
+
+// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
+//     addCardHandler(cardData);
+//     // cardList.addItem(createCard(api.addCard(data['newPlace'], data['linkPlace'])));
+//     // cardList.addItem(createCard(cardData));
+// });
 popupAddForm.setEventListeners();
 
 
-function addCardHandler(cardName, linkPlace) {
-    api.addCard(cardName, linkPlace)
+function addCardHandler(name, link) {
+    api.addCard(name, link)
+
     .then((res) => {
         cardList.addItem(res);
+        console.log(res)
     })
     .catch((err) => {
         console.log(err);
@@ -81,7 +85,12 @@ const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.
 
 function editAvatarHandler (nameUser, aboutUser) {
     api.editAvatar(nameUser, aboutUser)
-  
+    .then((res) => {
+        // cardList.addItem(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 }
 
 const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
@@ -102,7 +111,6 @@ function handleCardClick(name, link) {
 
 // profilePopupForm.setEventListeners();
 
-
 buttonAddProfile.addEventListener('click', () => {
     cardFormValidator.toggleButtonState();
     cardFormValidator.resetValidation();
@@ -118,8 +126,6 @@ linkEditProfile.addEventListener('click', () => {
     profilePopupForm.openPopup();
 });
 
-
-
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43');
 
 api.getCards()
@@ -129,7 +135,6 @@ api.getCards()
 .catch((err) => {
     console.log(err);
 })
-
 
 api.getAvatar ()
 .then((user) => {

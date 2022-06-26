@@ -54,11 +54,10 @@ export default class Api {
           })
   }
 
-
-  addCard (cardName, linkPlace) {
+  addCard (name, link) {
     const body = {
-      name: cardName,
-      link: linkPlace
+      name: name,
+      link: link
     }
 
     return fetch(`${this._url}/cards`, {
