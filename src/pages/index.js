@@ -51,30 +51,37 @@ const cardList = new Section({
 // cardList.renderItems();
 
 
-// const cardList = new Section('.cards');
-// cardList.addItem(createCard(item));
 
 // cardList.renderItems();
 // const cardSection = api.getCards();
- const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) =>{
+//  const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) =>{
 
- });
+//  });
 
-// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-//     // api.getCards().addItem(createCard(api.addCard(data['newPlace'], data['linkPlace'])));
-//     cardSection.addItem(createCard(cardData));
-// });
+const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+    // const cardData = { name: data['newPlace'], link: data['linkPlace'] };
+    addCardHandler();
+    // cardList.addItem(createCard(api.addCard(data['newPlace'], data['linkPlace'])));
+    // cardList.addItem(createCard(cardData));
+});
 popupAddForm.setEventListeners();
 
+
+function addCardHandler(cardName, linkPlace) {
+    api.addCard(cardName, linkPlace)
+    .then((res) => {
+        cardList.addItem(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
 function editAvatarHandler (nameUser, aboutUser) {
     api.editAvatar(nameUser, aboutUser)
-    // .then((res) => {
-    //     cardList.addItem(res);
-    // });
+  
 }
 
 const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
@@ -94,10 +101,6 @@ function handleCardClick(name, link) {
 };
 
 // profilePopupForm.setEventListeners();
-
-// function addCardHandler (cardName, linkPlace) {
-//     api.addCard(cardName, linkPlace);
-// }
 
 
 buttonAddProfile.addEventListener('click', () => {
