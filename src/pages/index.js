@@ -35,27 +35,51 @@ imagePopupForm.setEventListeners();
 
 
 // const cardList = new Section({
-//     data: cards, renderer: (card) => {
-//         cardList.addItem(createCard(card));
+//   renderer: (cards) => {
+//         cardList.addItem(createCard(cards));
 //     },
 // }, '.cards');
 // cardList.renderItems();
 
-const cardList = new Section('.cards');
 
-const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-    // const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-    cardList.addItem(createCard(api.addCard(data['newPlace'], data['linkPlace']), '.template'));
-    // cardList.addItem(createCard(cardData, '.template', handleCardClick));
-});
+const cardList = new Section({
+    renderer: (item) => {
+        cardList.addItem(createCard(item));
+    },
+}, '.cards');
+
+// cardList.renderItems();
+
+
+// const cardList = new Section('.cards');
+// cardList.addItem(createCard(item));
+
+// cardList.renderItems();
+// const cardSection = api.getCards();
+ const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) =>{
+
+ });
+
+// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
+//     // api.getCards().addItem(createCard(api.addCard(data['newPlace'], data['linkPlace'])));
+//     cardSection.addItem(createCard(cardData));
+// });
+popupAddForm.setEventListeners();
+
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-    user.setUserInfo(data);
-    
+function editAvatarHandler (nameUser, aboutUser) {
+    api.editAvatar(nameUser, aboutUser)
+    // .then((res) => {
+    //     cardList.addItem(res);
+    // });
+}
 
-});
+const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+    user.setUserInfo(data); 
+}, editAvatarHandler);
 
 // cardList.renderItems();
 
@@ -71,7 +95,10 @@ function handleCardClick(name, link) {
 
 // profilePopupForm.setEventListeners();
 
-popupAddForm.setEventListeners();
+// function addCardHandler (cardName, linkPlace) {
+//     api.addCard(cardName, linkPlace);
+// }
+
 
 buttonAddProfile.addEventListener('click', () => {
     cardFormValidator.toggleButtonState();
@@ -88,20 +115,18 @@ linkEditProfile.addEventListener('click', () => {
     profilePopupForm.openPopup();
 });
 
+
+
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43');
 
 api.getCards()
 .then((cards) => {
-    const cardList = new Section({
-        data: cards, renderer: (card) => {
-            cardList.addItem(createCard(card));
-        },
-    }, '.cards');
-    cardList.renderItems();
+    cardList.renderItems(cards);
 })
 .catch((err) => {
     console.log(err);
 })
+
 
 api.getAvatar ()
 .then((user) => {
@@ -124,14 +149,20 @@ api.getAvatar ()
 //     console.log(err);
 // })
 
-// api.addCard ()
-// .then(() => {
-// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-//     cardList.addItem(createCard(cardData, '.template', handleCardClick));
-// });
-// popupAddForm.setEventListeners();
+// api.getCards()
+// .then((cards) => {
+//     const cardList = new Section({
+//         data: cards, renderer: (card) => {
+//             cardList.addItem(createCard(card));
+//         },
+//     }, '.cards');
+//     console.log(cardList);
+//     cardList.renderItems();
+//     return cardList;
 // })
+// // .then (() => {
+// //     addCardHandler();
+// // })
 // .catch((err) => {
 //     console.log(err);
 // })
