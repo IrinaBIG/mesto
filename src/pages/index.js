@@ -39,10 +39,10 @@ imagePopupForm.setEventListeners();
 //     },
 // }, '.cards');
 
-const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-    const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-    cardList.addItem(createCard(cardData, '.template', handleCardClick));
-});
+// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
+//     cardList.addItem(createCard(cardData, '.template', handleCardClick));
+// });
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
@@ -64,7 +64,7 @@ function handleCardClick(name, link) {
 
 // profilePopupForm.setEventListeners();
 
-popupAddForm.setEventListeners();
+// popupAddForm.setEventListeners();
 
 buttonAddProfile.addEventListener('click', () => {
     cardFormValidator.toggleButtonState();
@@ -107,14 +107,25 @@ api.getAvatar ()
     console.log(err);
 })
 
-api.addAvatar()
-.then(() => {
-    
+api.editAvatar()
+.then((user) => {
     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-        user.setUserInfo(user.name, user.about);
+        user.setUserInfo(data.name, data.about);
     });
     profilePopupForm.setEventListeners();
 })
 .catch((err) => {
     console.log(err);
 })
+
+// api.addCard ()
+// .then(() => {
+// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
+//     cardList.addItem(createCard(cardData, '.template', handleCardClick));
+// });
+// popupAddForm.setEventListeners();
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
