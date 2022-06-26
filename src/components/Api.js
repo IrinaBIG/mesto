@@ -35,10 +35,10 @@ export default class Api {
       })
   }
 
-  editAvatar(name, about) {
+  editAvatar(nameUser, aboutUser) {
     const body = {
-      name: name,
-      about: about
+      name: nameUser,
+      about: aboutUser
     };
 
     return fetch(`${this._url}/users/me`, {
@@ -53,22 +53,25 @@ export default class Api {
             return Promise.reject(`Возникла ошибка: ${res.status}`);
           })
   }
-  // addCard (cardName) {
-  //   const body = {
-  //     name: cardName,
-  //   }
 
-  //   return fetch(`${this._url}/cards`, {
-  //     headers: this._headers,
-  //     method: 'POST',
-  //     body: JSON.stringify(body),
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       return Promise.reject(`Возникла ошибка: ${res.status}`);
-  //     })
-  //  }
+
+  addCard (cardName, linkPlace) {
+    const body = {
+      name: cardName,
+      link: linkPlace
+    }
+
+    return fetch(`${this._url}/cards`, {
+      headers: this._headers,
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
+   }
 }
 

@@ -33,22 +33,29 @@ editFormValidator.enableValidation();
 const imagePopupForm = new PopupWithImage('.popup_place_image-card');
 imagePopupForm.setEventListeners();
 
+
 // const cardList = new Section({
-//     data: cards, renderer: (item) => {
-//         cardList.addItem(createCard(item));
+//     data: cards, renderer: (card) => {
+//         cardList.addItem(createCard(card));
 //     },
 // }, '.cards');
+// cardList.renderItems();
 
-// const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
-//     const cardData = { name: data['newPlace'], link: data['linkPlace'] };
-//     cardList.addItem(createCard(cardData, '.template', handleCardClick));
-// });
+const cardList = new Section('.cards');
+
+const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) => {
+    // const cardData = { name: data['newPlace'], link: data['linkPlace'] };
+    cardList.addItem(createCard(api.addCard(data['newPlace'], data['linkPlace']), '.template'));
+    // cardList.addItem(createCard(cardData, '.template', handleCardClick));
+});
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-// const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-//     user.setUserInfo(data);
-// });
+const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+    user.setUserInfo(data);
+    
+
+});
 
 // cardList.renderItems();
 
@@ -64,7 +71,7 @@ function handleCardClick(name, link) {
 
 // profilePopupForm.setEventListeners();
 
-// popupAddForm.setEventListeners();
+popupAddForm.setEventListeners();
 
 buttonAddProfile.addEventListener('click', () => {
     cardFormValidator.toggleButtonState();
@@ -78,10 +85,9 @@ linkEditProfile.addEventListener('click', () => {
     addActivityProfile.value = userData.work;
     editFormValidator.toggleButtonState();
     editFormValidator.resetValidation();
-    api.editAvatar(profilePopupForm.openPopup());
+    profilePopupForm.openPopup();
 });
 
-// const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/cards');
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43');
 
 api.getCards()
@@ -107,16 +113,16 @@ api.getAvatar ()
     console.log(err);
 })
 
-api.editAvatar()
-.then((user) => {
-    const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-        user.setUserInfo(data.name, data.about);
-    });
-    profilePopupForm.setEventListeners();
-})
-.catch((err) => {
-    console.log(err);
-})
+// api.editAvatar()
+// .then((user) => {
+//     const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+//         user.setUserInfo(data.name, data.about);
+//     });
+//     profilePopupForm.setEventListeners();
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
 
 // api.addCard ()
 // .then(() => {
