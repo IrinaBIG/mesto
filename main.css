@@ -20,7 +20,7 @@
 .cards__button{align-self:center;background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;width:22px}.cards__button:hover{opacity:.5}
 .cards__button_active{background-image:url(35948469632d0421d697.svg)}
 .cards__like{height:35px;width:22px}
-.cards__counter{height:13px;margin:3px auto 0;width:10px}
+.cards__counter{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;text-rendering:auto;color:#000;font-size:13px;font-weight:400;height:13px;line-height:13px;margin:3px auto 0;width:10px}
 .button__remove{background:transparent url(ce3b64935accf9b8212e.svg) 50% no-repeat;background-size:cover;position:absolute;right:20px;top:20px}
 .button{border:none;cursor:pointer;height:19px;width:18px}.button:hover{opacity:.7}
 .footer{margin:67px auto 60px;max-width:880px;width:100%}@media (max-width:900px){.footer{max-width:-webkit-max-content;max-width:-moz-max-content;max-width:max-content}}@media (max-width:320px){.footer{margin:50px auto 60px;max-width:282px}}
