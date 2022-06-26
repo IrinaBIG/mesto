@@ -78,7 +78,7 @@ linkEditProfile.addEventListener('click', () => {
     addActivityProfile.value = userData.work;
     editFormValidator.toggleButtonState();
     editFormValidator.resetValidation();
-    api.addAvatar(openPopup());
+    api.editAvatar(profilePopupForm.openPopup());
 });
 
 // const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43/cards');
