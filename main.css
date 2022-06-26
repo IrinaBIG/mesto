@@ -19,6 +19,8 @@
 .cards__date{display:flex;justify-content:space-between;padding:23.81px 21px 28.5px}@media (max-width:600px){.cards__date{padding:15px}}@media (max-width:320px){.cards__date{padding:23.31px 15px 28.3px;width:246px}}
 .cards__button{align-self:center;background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;width:22px}.cards__button:hover{opacity:.5}
 .cards__button_active{background-image:url(35948469632d0421d697.svg)}
+.cards__like{height:35px;width:22px}
+.cards__counter{height:13px;margin:3px auto 0;width:10px}
 .button__remove{background:transparent url(ce3b64935accf9b8212e.svg) 50% no-repeat;background-size:cover;position:absolute;right:20px;top:20px}
 .button{border:none;cursor:pointer;height:19px;width:18px}.button:hover{opacity:.7}
 .footer{margin:67px auto 60px;max-width:880px;width:100%}@media (max-width:900px){.footer{max-width:-webkit-max-content;max-width:-moz-max-content;max-width:max-content}}@media (max-width:320px){.footer{margin:50px auto 60px;max-width:282px}}
