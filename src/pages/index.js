@@ -85,17 +85,20 @@ const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.
 
 function editAvatarHandler (nameUser, aboutUser) {
     api.editAvatar(nameUser, aboutUser)
-    .then((res) => {
-        // cardList.addItem(res);
+    .then((data) => {
+        user.setUserInfo(data); 
     })
     .catch((err) => {
         console.log(err);
     })
 }
 
-const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-    user.setUserInfo(data); 
-}, editAvatarHandler);
+
+const profilePopupForm = new PopupWithForm('.popup_place_profile', editAvatarHandler);
+
+// const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+//     user.setUserInfo(data); 
+// }, editAvatarHandler);
 
 // cardList.renderItems();
 
