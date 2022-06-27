@@ -69,8 +69,8 @@ const popupAddForm = new PopupWithForm('.popup_place_add-card', addCardHandler);
 popupAddForm.setEventListeners();
 
 
-function addCardHandler(name, link) {
-    api.addCard(name, link)
+function addCardHandler(data) {
+    api.addCard(data.newPlace, data.linkPlace)
 
     .then((res) => {
         cardList.addItem(res);
@@ -83,7 +83,7 @@ function addCardHandler(name, link) {
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-function editAvatarHandler (nameUser, aboutUser) {
+function editAvatarHandler ({nameUser, aboutUser}) {
     api.editAvatar(nameUser, aboutUser)
     .then((data) => {
         user.setUserInfo(data); 
@@ -112,7 +112,7 @@ function handleCardClick(name, link) {
     imagePopupForm.openPopup(name, link);
 };
 
-// profilePopupForm.setEventListeners();
+profilePopupForm.setEventListeners();
 
 buttonAddProfile.addEventListener('click', () => {
     cardFormValidator.toggleButtonState();
