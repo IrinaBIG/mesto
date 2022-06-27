@@ -83,8 +83,8 @@ function addCardHandler(data) {
 
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-function editAvatarHandler ({nameUser, aboutUser}) {
-    api.editAvatar(nameUser, aboutUser)
+function editAvatarHandler () {
+    api.editAvatar(data)
     .then((data) => {
         user.setUserInfo(data); 
     })

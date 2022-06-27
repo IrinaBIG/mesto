@@ -35,10 +35,10 @@ export default class Api {
       })
   }
 
-  editAvatar(nameUser, aboutUser) {
+  editAvatar(firstname, work) {
     const body = {
-      name: nameUser,
-      about: aboutUser
+      name: firstname,
+      about: work
     };
 
     return fetch(`${this._url}/users/me`, {
