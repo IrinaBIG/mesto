@@ -3,7 +3,7 @@ export default class Api {
     this._url = url;
     this._token = token;
     this._headers = {
-      authorization: '95e5bb8d-852f-4443-ae3b-fcac38693ef0',
+      authorization: '90c75bce-c969-4e4d-866d-1b44dc526706',
       'Content-Type': 'application/json'
     }
   }
@@ -22,6 +22,18 @@ export default class Api {
       })
   }
 
+//  getUserCards() {
+//   return fetch(`${this._url}/cards/0545d24564d46fc92613a7bd`, {
+//     headers: this._headers
+//       // 'authorization': this._token,
+//   })
+//     .then((res) => {
+//       if (res.ok) {
+//         return res.json();
+//       }
+//       return Promise.reject(`Возникла ошибка: ${res.status}`);
+//     })
+//  }
 
   getAvatar() {
     return fetch(`${this._url}/users/me`, {
