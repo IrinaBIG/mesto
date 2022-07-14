@@ -28,8 +28,14 @@ export class Card {
     }
 
     _handleLikeClick() {
+        this._cradsLike = document.querySelector('.cards__like')
         this._cardsButton.classList.toggle('cards__button_active');
+        // button.classList.toggle("is-active");
+        const current = Number(this._cradsLike[index].innerHTML);
+        const inc = button.classList.contains("is-active") ? 1 : -1;
+        this._cradsLike[index].innerHTML = current + inc;
     };
+    
 
     _handleRemoveCard() {
         this._element.remove('cards__item');

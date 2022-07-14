@@ -5,6 +5,7 @@ import Section from '../components/Section.js';
 import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import {
@@ -23,6 +24,7 @@ import {
     activityProfileInput,
     avatarProfileInput,
 } from '../scripts/Utils/constants.js';
+import { data } from 'autoprefixer';
 
 const cardFormValidator = new FormValidator(config, formAddCard);
 cardFormValidator.enableValidation();
@@ -33,30 +35,18 @@ editFormValidator.enableValidation();
 const imagePopupForm = new PopupWithImage('.popup_place_image-card');
 imagePopupForm.setEventListeners();
 
+const confirmationPopupForm = new PopupWithConfirmation('.popup_confirmation');
 
-// const cardList = new Section({
-//   renderer: (cards) => {
-//         cardList.addItem(createCard(cards));
-//     },
-// }, '.cards');
-// cardList.renderItems();
-
+confirmationPopupForm.setEventListeners();
 
 const cardList = new Section({
     renderer: (item) => {
+        // console.log(item);
         cardList.addItem(createCard(item));
     },
 }, '.cards');
 
 // cardList.renderItems();
-
-
-
-// cardList.renderItems();
-// const cardSection = api.getCards();
-//  const popupAddForm = new PopupWithForm('.popup_place_add-card', (data) =>{
-
-//  });
 
 const popupAddForm = new PopupWithForm('.popup_place_add-card', addCardHandler);
 
@@ -68,12 +58,10 @@ const popupAddForm = new PopupWithForm('.popup_place_add-card', addCardHandler);
 // });
 popupAddForm.setEventListeners();
 
-
-function addCardHandler(data) {
-    api.addCard(data.newPlace, data.linkPlace)
-
+function addCardHandler(item) {
+    api.addCard(item.newPlace, item.linkPlace)
     .then((res) => {
-        cardList.addItem(res);
+        cardList.addItem(createCard(res));
         console.log(res)
     })
     .catch((err) => {
@@ -81,26 +69,27 @@ function addCardHandler(data) {
     })
 }
 
+
 const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity' });
 
-function editAvatarHandler () {
-    api.editAvatar(data)
-    .then((data) => {
-        user.setUserInfo(data); 
+const profilePopupForm = new PopupWithForm('.popup_place_profile', editAvatarHandler);
+// const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
+//     user.setUserInfo(data); 
+// });
+
+// cardList.renderItems();
+profilePopupForm.setEventListeners();
+
+function editAvatarHandler(data) {
+    api.editAvatar(data.firstname, data.work)
+    .then((res) => {
+        user.setUserInfo(res);
+        console.log(res)
     })
     .catch((err) => {
         console.log(err);
     })
 }
-
-
-const profilePopupForm = new PopupWithForm('.popup_place_profile', editAvatarHandler);
-
-// const profilePopupForm = new PopupWithForm('.popup_place_profile', (data) => {
-//     user.setUserInfo(data); 
-// }, editAvatarHandler);
-
-// cardList.renderItems();
 
 function createCard(item) {
     const card = new Card(item.name, item.link, '.template', handleCardClick);
@@ -112,7 +101,7 @@ function handleCardClick(name, link) {
     imagePopupForm.openPopup(name, link);
 };
 
-profilePopupForm.setEventListeners();
+
 
 buttonAddProfile.addEventListener('click', () => {
     cardFormValidator.toggleButtonState();
@@ -121,15 +110,19 @@ buttonAddProfile.addEventListener('click', () => {
 });
 
 linkEditProfile.addEventListener('click', () => {
+    
     const userData = user.getUserInfo({ firstname: nameProfileInput, work: activityProfileInput });
     addNameProfileForm.value = userData.firstname;
     addActivityProfile.value = userData.work;
     editFormValidator.toggleButtonState();
     editFormValidator.resetValidation();
+    api.getCards();
     profilePopupForm.openPopup();
 });
 
-const api = new Api('https://mesto.nomoreparties.co/v1/cohort-43');
+const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45');
+
+
 
 api.getCards()
 .then((cards) => {
@@ -139,11 +132,21 @@ api.getCards()
     console.log(err);
 })
 
-api.getAvatar ()
+// api.getUserCards()
+// .then((res) => {
+//     console.log(res);
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
+
+
+api.getAvatar()
 .then((user) => {
     nameProfileInput.textContent = user.name;
     activityProfileInput.textContent = user.about;
     avatarProfileInput.src = user.avatar;
+    // console.log(user);
 })
 .catch((err) => {
     console.log(err);
