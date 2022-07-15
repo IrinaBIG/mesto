@@ -5,14 +5,15 @@ export default class Section {
     };
 
     renderItems(items) {
-        
-        items.forEach((item) => {
-            this._renderer(item); // вызываем renderer, передав item
+        items.reverse().forEach((item) => {
+     
+            this.addItem(item); // вызываем renderer, передав item
         });
     }
 
-    addItem(element) {
-        this._container.prepend(element);
+
+    addItem(card) {
+        this._container.prepend(this._renderer(card));
         // console.log(element);
     };
 }
