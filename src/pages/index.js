@@ -71,17 +71,16 @@ const profilePopupForm = new PopupWithForm('.popup_place_profile', editUserInfoH
 const avatarUpdateForm = new PopupWithForm('.popup_place_avatar', updateAvatarHandler);
 avatarUpdateForm.setEventListeners();
 
-function updateAvatarHandler(src) {
-    api.updateAvatar(src)
+function updateAvatarHandler(data) {
+    api.updateAvatar(data.avatarPlace)
     .then((img) => {
-        avatarProfileInput.src = img.avatar;
+        avatarProfileInput.url.backgroundImage = img.avatar;
         console.log(img)
     })
     .catch((err) => {
         console.log(err);
     })
 }
-
 
 profilePopupForm.setEventListeners();
 

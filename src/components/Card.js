@@ -40,13 +40,13 @@ export class Card {
         
     };
     
-    getId() {
-        return this._id;
-    }
+    // getId() {
+    //     return this._id;
+    // }
 
-    removeCard() {
-        this._element.remove('cards__item');
-    };
+    // removeCard() {
+    //     this._element.remove('cards__item');
+    // };
 
     _setEventListeners() {
         this._cardsButton = this._element.querySelector('.cards__button');
