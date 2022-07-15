@@ -8,6 +8,22 @@ export default class Api {
     }
   }
 
+  _checkResponse = (res) => {
+    if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Возникла ошибка: ${res.status}`);
+    }
+
+  // _handleServerErrors (err) {
+  //   console.log('handleServerErrors');
+  //   console.dir(err);
+  //   return Promise.reject(`Возникла ошибка: ${err.message}`);
+  // }
+
+  // _fetchFromServer (url, options) {
+
+  // }
 
   getCards() {
     return fetch(`${this._url}/cards`, {
@@ -97,31 +113,39 @@ export default class Api {
       })
   }
 
-  addLike() {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      headers: this._headers,
-      method: 'PUT',
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Возникла ошибка: ${res.status}`);
+  toggleLike (cardId, isLiked) {
+      return fetch(`${this._url}/cards/${cardId}/likes`, {
+        headers: this._headers,
+        method: isLiked ? 'DELETE' : 'PUT',
       })
-  }
+        .then(this._checkResponse)
+    }
 
-  deleteLike() {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      headers: this._headers,
-      method: 'DELETE',
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Возникла ошибка: ${res.status}`);
-      })
-  }
+  // addLike() {
+  //   return fetch(`${this._url}/cards/${cardId}/likes`, {
+  //     headers: this._headers,
+  //     method: 'PUT',
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       return Promise.reject(`Возникла ошибка: ${res.status}`);
+  //     })
+  // }
+
+  // deleteLike() {
+  //   return fetch(`${this._url}/cards/${cardId}/likes`, {
+  //     headers: this._headers,
+  //     method: 'DELETE',
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       return Promise.reject(`Возникла ошибка: ${res.status}`);
+  //     })
+  // }
 
   updateAvatar(avatarPlace) {
     const body = {
@@ -132,12 +156,12 @@ export default class Api {
       method: 'PATCH',
       body: JSON.stringify(body)
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Возникла ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse) 
+      // .catch(this._handleServerErrors)
+      /* (err) => {
+        console.log('Ошибка обновления аватара');
+        console.dir(err);
+      } */
   }
 }
 
