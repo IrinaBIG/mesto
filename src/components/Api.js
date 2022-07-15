@@ -123,9 +123,9 @@ export default class Api {
       })
   }
 
-  updateAvatar(src) {
+  updateAvatar(avatarPlace) {
     const body = {
-      avatar: src
+      avatar: avatarPlace
     };
     return fetch(`${this._url}/users/me/avatar`, {
       headers: this._headers,
