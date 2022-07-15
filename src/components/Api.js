@@ -12,7 +12,7 @@ export default class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers
-        // 'authorization': this._token,
+      // 'authorization': this._token,
     })
       .then((res) => {
         if (res.ok) {
@@ -22,20 +22,7 @@ export default class Api {
       })
   }
 
-//  getUserCards() {
-//   return fetch(`${this._url}/cards/0545d24564d46fc92613a7bd`, {
-//     headers: this._headers
-//       // 'authorization': this._token,
-//   })
-//     .then((res) => {
-//       if (res.ok) {
-//         return res.json();
-//       }
-//       return Promise.reject(`Возникла ошибка: ${res.status}`);
-//     })
-//  }
-
-  getAvatar() {
+  getUser() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers
     })
@@ -47,7 +34,7 @@ export default class Api {
       })
   }
 
-  editAvatar(firstname, work) {
+  editUserInfo(firstname, work) {
     const body = {
       name: firstname,
       about: work
@@ -58,15 +45,15 @@ export default class Api {
       method: 'PATCH',
       body: JSON.stringify(body)
     })
-    .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-            return Promise.reject(`Возникла ошибка: ${res.status}`);
-          })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
   }
 
-  addCard (newPlace, linkPlace) {
+  addCard(newPlace, linkPlace) {
     const body = {
       name: newPlace,
       link: linkPlace
@@ -83,6 +70,75 @@ export default class Api {
         }
         return Promise.reject(`Возникла ошибка: ${res.status}`);
       })
-   }
+  }
+
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      headers: this._headers,
+      method: 'DELETE',
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
+  }
+
+  countsLikes() {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      headers: this._headers
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
+  }
+
+  addLike() {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      headers: this._headers,
+      method: 'PUT',
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
+  }
+
+  deleteLike() {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      headers: this._headers,
+      method: 'DELETE',
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
+  }
+
+  updateAvatar(src) {
+    const body = {
+      avatar: src
+    };
+    return fetch(`${this._url}/users/me/avatar`, {
+      headers: this._headers,
+      method: 'PATCH',
+      body: JSON.stringify(body)
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Возникла ошибка: ${res.status}`);
+      })
+  }
 }
+
 

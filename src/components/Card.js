@@ -1,10 +1,12 @@
 export class Card {
 
-    constructor(name, link, templateSelector, handleCardClick) {
+    constructor(name, link, templateSelector, handleCardClick, deleteCardHendler) {
         this._name = name;
         this._link = link;
+        // this._id = id;
         this._template = document.querySelector(templateSelector).content;
         this._handleCardClick = handleCardClick;
+        this._deleteCardHendler = deleteCardHendler;
     }
 
     _getTemplate() {
@@ -28,16 +30,21 @@ export class Card {
     }
 
     _handleLikeClick() {
-        this._cradsLike = document.querySelector('.cards__like')
+        this._cardsCounter = document.querySelector('.cards__counter')
         this._cardsButton.classList.toggle('cards__button_active');
-        // button.classList.toggle("is-active");
-        const current = Number(this._cradsLike[index].innerHTML);
-        const inc = button.classList.contains("is-active") ? 1 : -1;
-        this._cradsLike[index].innerHTML = current + inc;
+        // if (this._cardsButton.classList.contains('cards__button_active')) {
+        //     this._cardsCounter =+1;
+        // } else {
+        //     this._cardsCounter =-1;
+        // }
+        
     };
     
+    getId() {
+        return this._id;
+    }
 
-    _handleRemoveCard() {
+    removeCard() {
         this._element.remove('cards__item');
     };
 
@@ -49,8 +56,12 @@ export class Card {
         });
 
         this._element.querySelector('.button__remove').addEventListener('click', () => {
-            this._handleRemoveCard();
+            this._deleteCardHendler(this);
         });
+
+        // this._element.querySelector('.button__remove').addEventListener('click', () => {
+        //     this._handleRemoveCard();
+        // });
 
         this._cardImage.addEventListener('click', () => {
             this._handleCardClick(this._name, this._link);
