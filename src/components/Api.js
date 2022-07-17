@@ -10,10 +10,10 @@ export default class Api {
 
   _checkResponse = (res) => {
     if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Возникла ошибка: ${res.status}`);
+      return res.json();
     }
+    return Promise.reject(`Возникла ошибка: ${res.status}`);
+  }
 
   // _handleServerErrors (err) {
   //   console.log('handleServerErrors');
@@ -101,25 +101,25 @@ export default class Api {
       })
   }
 
-  countsLikes() {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      headers: this._headers
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Возникла ошибка: ${res.status}`);
-      })
-  }
+  // countsLikes() {
+  //   return fetch(`${this._url}/cards/${cardId}/likes`, {
+  //     headers: this._headers
+  //   })
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       return Promise.reject(`Возникла ошибка: ${res.status}`);
+  //     })
+  // }
 
-  toggleLike (cardId, isLiked) {
-      return fetch(`${this._url}/cards/${cardId}/likes`, {
-        headers: this._headers,
-        method: isLiked ? 'DELETE' : 'PUT',
-      })
-        .then(this._checkResponse)
-    }
+  toggleLike(cardId, isLiked) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
+      headers: this._headers,
+      method: isLiked ? 'DELETE' : 'PUT',
+    })
+      .then(this._checkResponse)
+  }
 
   // addLike() {
   //   return fetch(`${this._url}/cards/${cardId}/likes`, {
@@ -156,12 +156,12 @@ export default class Api {
       method: 'PATCH',
       body: JSON.stringify(body)
     })
-      .then(this._checkResponse) 
-      // .catch(this._handleServerErrors)
-      /* (err) => {
-        console.log('Ошибка обновления аватара');
-        console.dir(err);
-      } */
+      .then(this._checkResponse)
+    // .catch(this._handleServerErrors)
+    /* (err) => {
+      console.log('Ошибка обновления аватара');
+      console.dir(err);
+    } */
   }
 }
 

@@ -91,7 +91,6 @@ export default class Card {
         } else {
             this._removeButton.remove();
         }
-        
         this._cardImage.addEventListener('click', this._handleCardClick);
     }
 }
