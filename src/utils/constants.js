@@ -1,19 +1,19 @@
-import Api from "../components/Api";
-import Section from '../components/Section.js';
-import FormValidator from '../components/FormValidator.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithConfirmation from '../components/PopupWithConfirmation';
-import UserInfo from '../components/UserInfo.js';
+// import Api from "../components/Api";
+// import Section from '../components/Section.js';
+// import FormValidator from '../components/FormValidator.js';
+// import PopupWithImage from '../components/PopupWithImage.js';
+// import PopupWithForm from '../components/PopupWithForm.js';
+// import PopupWithConfirmation from '../components/PopupWithConfirmation';
+// import UserInfo from '../components/UserInfo.js';
 
-import { 
-    addCardHandler, 
-    createCard, 
-    updateAvatarHandler, 
-    deleteCardHandler, 
-    editUserInfoHandler,
+// import { 
+//     addCardHandler, 
+//     createCard, 
+//     updateAvatarHandler, 
+//     deleteCardHandler, 
+//     editUserInfoHandler,
     
-} from '../utils/utils';
+// } from '../utils/utils';
 
 export const config = {
     formSelector: '.form',
@@ -39,7 +39,7 @@ export const saveButtonCaptions = {
     activeCaption: 'Сохраняю...'
 }
 
-export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45');
+// export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45');
 export const linkEditProfile = document.querySelector('.profile__button-edit');
 // export const popupProfile = document.querySelector('.popup_place_profile');
 // export const popupCloseBtn = popupProfile.querySelector('.popup__close');
@@ -62,16 +62,16 @@ export const btnClosePopupImage = popupImage.querySelector('.popup__close');
 export const addButton = popupAddCard.querySelector(config.submitButtonSelector);
 // export const inputsProfileForm = Array.from(formElementProfile.querySelectorAll(config.inputSelector));
 export const inputsAddCardForm = Array.from(formAddCard.querySelectorAll(config.inputSelector));
-export const cardFormValidator = new FormValidator(config, formAddCard);
-export const editFormValidator = new FormValidator(config, formElementProfile);
-export const avatarFormValidator = new FormValidator(config, formUpdateAvatar);
-export const imagePopupForm = new PopupWithImage('.popup_place_image-card');
-export const confirmationPopupForm = new PopupWithConfirmation('.popup_confirmation', deleteCardHandler, confirmDeleteButtonCaptions);
-export const cardList = new Section({
-    renderer: createCard,
-    }, '.cards');
+// export const cardFormValidator = new FormValidator(config, formAddCard);
+// export const editFormValidator = new FormValidator(config, formElementProfile);
+// export const avatarFormValidator = new FormValidator(config, formUpdateAvatar);
+// export const imagePopupForm = new PopupWithImage('.popup_place_image-card');
+// export const confirmationPopupForm = new PopupWithConfirmation('.popup_confirmation', deleteCardHandler, confirmDeleteButtonCaptions);
+// export const cardList = new Section({
+//     renderer: createCard,
+//     }, '.cards');
 
-export const popupAddForm = new PopupWithForm('.popup_place_add-card', addCardHandler, createButtonCaptions);
-export const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity', avatarSelector: '.profile__avatar' });
-export const profilePopupForm = new PopupWithForm('.popup_place_profile', editUserInfoHandler, saveButtonCaptions);
-export const avatarUpdateForm = new PopupWithForm('.popup_place_avatar', updateAvatarHandler, saveButtonCaptions);
+// export const popupAddForm = new PopupWithForm('.popup_place_add-card', addCardHandler, createButtonCaptions);
+// export const user = new UserInfo({ nameSelector: '.profile__name', activitySelector: '.profile__activity', avatarSelector: '.profile__avatar' });
+// export const profilePopupForm = new PopupWithForm('.popup_place_profile', editUserInfoHandler, saveButtonCaptions);
+// export const avatarUpdateForm = new PopupWithForm('.popup_place_avatar', updateAvatarHandler, saveButtonCaptions);
