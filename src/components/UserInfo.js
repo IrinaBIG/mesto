@@ -24,7 +24,14 @@ export default class UserInfo {
         this._name = name;
         this._about = about;
         this._avatar = avatar;
+        // console.dir(this._avatarElement);
         this._id = _id;
+    }
+    
+    getUserAvatar () {
+        return {
+            avatar: this._avatar,
+        }
     }
 
     getUserId() {
