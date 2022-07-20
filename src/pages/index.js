@@ -84,7 +84,7 @@ function updateAvatarHandler(data, toggleButtonCaptionCallback, closePopupCallba
             closePopupCallback();
         })
         .catch((err) => {
-            console.dir(err);
+            console.log(err);
         })
         .finally(() => {
             toggleButtonCaptionCallback(false);
