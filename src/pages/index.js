@@ -145,6 +145,8 @@ linkEditProfile.addEventListener('click', () => {
     // api.getCards();
     profilePopupForm.openPopup();
 });
+ 
+ 
 
 avatarProfileInput.addEventListener('click', () => {
     avatarFormValidator.toggleButtonState();

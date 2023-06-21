@@ -9,6 +9,7 @@ export default class Api {
   }
 
   _checkResponse = (res) => {
+    console.dir(res)
     if (res.ok) {
       return res.json();
     }
@@ -35,6 +36,8 @@ export default class Api {
       name: firstname,
       about: work
     };
+    console.log(body);
+    
 
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
